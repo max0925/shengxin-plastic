@@ -1,0 +1,161 @@
+{
+  "nav": {
+    "materials": "产品中心",
+    "applications": "应用领域",
+    "about": "关于我们",
+    "contact": "联系我们"
+  },
+  "hero": {
+    "company": "宁波市海曙盛欣塑化有限公司",
+    "title": "定制改性塑料，服务全球制造",
+    "subtitle": "工程级改性塑料，按您的规格定制——PP、PA、ABS、PC 及更多材料。",
+    "viewMaterials": "查看产品",
+    "getQuote": "联系我们"
+  },
+  "materials": {
+    "label": "我们的产品",
+    "title": "深耕改性塑料领域超过37年",
+    "sectionTitle": "材料与能力",
+    "sectionSubtitle": "为实际应用而设计的工程塑料",
+    "materialsLabel": "材料",
+    "capabilitiesLabel": "改性能力",
+    "readMore": "了解更多 →",
+    "mechanical": "力学与结构改性",
+    "safety": "安全与防护",
+    "weathering": "耐候与耐久",
+    "appearance": "外观与定制",
+    "mechanicalItems": {
+      "glass": "玻纤增强",
+      "impact": "增韧改性",
+      "highTemp": "耐高温",
+      "escr": "耐环境应力开裂 (ESCR)"
+    },
+    "safetyItems": {
+      "flame": "阻燃级 (UL94 V0/V2)",
+      "antiStatic": "防静电",
+      "antibacterial": "抗菌"
+    },
+    "weatheringItems": {
+      "uv": "抗紫外线 (UV稳定)",
+      "weather": "耐候"
+    },
+    "appearanceItems": {
+      "highGloss": "高光泽度/钢琴黑",
+      "antiSqueak": "防异响 (NVH)",
+      "color": "色彩匹配 (RAL / Pantone)",
+      "custom": "定制配方",
+      "oem": "OEM / ODM 支持"
+    },
+    "items": {
+      "PA6": {
+        "name": "PA6",
+        "desc": "通用尼龙，韧性极佳"
+      },
+      "PA66": {
+        "name": "PA66",
+        "desc": "高强度，出色的耐热性"
+      },
+      "PP": {
+        "name": "PP",
+        "desc": "高性价比，用途广泛"
+      },
+      "ABS": {
+        "name": "ABS",
+        "desc": "优越的抗冲击性能"
+      },
+      "PS": {
+        "name": "PS",
+        "desc": "硬度高，易于加工成型"
+      },
+      "PE": {
+        "name": "PE",
+        "desc": "柔韧性好，耐化学腐蚀"
+      },
+      "PBT": {
+        "name": "PBT",
+        "desc": "尺寸稳定性好，吸水率低"
+      },
+      "PC_ABS": {
+        "name": "PC/ABS",
+        "desc": "抗冲击与耐热性的完美结合"
+      }
+    }
+  },
+  "applications": {
+    "label": "应用领域",
+    "title": "服务各大行业",
+    "subtitle": "我们的材料广泛应用于全球各类高要求场景。",
+    "items": {
+      "home": {
+        "title": "家用电器",
+        "desc": "电器外壳、内部结构件、阻燃组件"
+      },
+      "auto": {
+        "title": "汽车工业",
+        "desc": "非结构性汽车部件、内饰件、卡扣与紧固件"
+      },
+      "construction": {
+        "title": "建筑建材",
+        "desc": "管材管件、耐候型材"
+      },
+      "electronics": {
+        "title": "消费电子",
+        "desc": "电子设备外壳、连接器、外观件"
+      },
+      "industrial": {
+        "title": "工业零部件",
+        "desc": "轴承、齿轮、输送设备组件"
+      }
+    }
+  },
+  "capabilities": {
+    "label": "我们的能力",
+    "title": "可靠、高效、规模化",
+    "subtitle": "从原材料到发货——每一步都经过质量控制。",
+    "production": "生产产能",
+    "productionDesc": "年产能 20,000+ 吨，多条挤出生产线",
+    "qcLab": "自有检测实验室",
+    "qcLabDesc": "完整的力学、热学和流变学测试能力",
+    "leadTime": "快速交期",
+    "leadTimeDesc": "常规配方一周，样品两天",
+    "export": "出口经验",
+    "exportDesc": "支持海外客户从材料开发到量产交付的全流程配合",
+    "certs": "资质认证",
+    "certsDesc": "ISO 9001 · SGS · ROHS · REACH · UL",
+    "support": "技术支持",
+    "supportDesc": "专属工程师提供配方开发与技术支持",
+    "established": "成立于",
+    "annualOutput": "年产量（吨）"
+  },
+  "cta": {
+    "label": "准备好了吗？",
+    "title": "让我们为您开发下一款材料",
+    "subtitle": "发送您的规格需求、申请样品，或预约技术沟通。",
+    "requestQuote": "获取报价",
+    "sendSpec": "发送规格书",
+    "bookCall": "预约技术沟通"
+  },
+  "footer": {
+    "company": "宁波市海曙盛欣塑化有限公司",
+    "addressL1": "冯家村双江岸",
+    "addressL2": "海曙区石碶街道",
+    "addressL3": "浙江省宁波市",
+    "addressL4": "中国",
+    "materials": "产品中心",
+    "quickLinks": "快速导航",
+    "contact": "联系方式",
+    "copyright": "© 2026 盛欣塑化 版权所有",
+    "location": "中国 浙江省 宁波市",
+    "im": "WhatsApp / 微信",
+    "materialLink1": "改性 PP",
+    "materialLink2": "改性 PA",
+    "materialLink3": "改性 ABS",
+    "materialLink4": "改性 PC",
+    "materialLink5": "工程塑料",
+    "quickLink1": "应用领域",
+    "quickLink2": "我们的能力",
+    "quickLink3": "关于我们",
+    "quickLink4": "联系我们",
+    "quickLink5": "获取报价"
+  }
+}

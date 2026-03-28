@@ -1,0 +1,161 @@
+{
+  "nav": {
+    "materials": "Materials",
+    "applications": "Applications",
+    "about": "About",
+    "contact": "Contact Us"
+  },
+  "hero": {
+    "company": "NINGBO SHENGXIN PLASTIC CO., LTD.",
+    "title": "Custom Modified Plastics for Global Manufacturing",
+    "subtitle": "Engineering-grade compounds tailored to your specifications — PP, PA, ABS, PC and beyond.",
+    "viewMaterials": "View Materials",
+    "getQuote": "Get a Quote"
+  },
+  "materials": {
+    "label": "What We Offer",
+    "title": "WE HAVE BEEN ENGINEERING MODIFIED PLASTICS FOR OVER 37 YEARS",
+    "sectionTitle": "Materials & Capabilities",
+    "sectionSubtitle": "Engineered Plastics for Real Applications",
+    "materialsLabel": "Materials",
+    "capabilitiesLabel": "Modification Capabilities",
+    "readMore": "READ MORE →",
+    "mechanical": "Mechanical & Structural",
+    "safety": "Safety & Protection",
+    "weathering": "Weathering & Durability",
+    "appearance": "Appearance & Custom",
+    "mechanicalItems": {
+      "glass": "Glass Fiber Reinforced",
+      "impact": "Impact Modified",
+      "highTemp": "High Temperature Resistant",
+      "escr": "Stress Crack Resistant (ESCR)"
+    },
+    "safetyItems": {
+      "flame": "Flame Retardant (UL94 V0/V2)",
+      "antiStatic": "Anti-static",
+      "antibacterial": "Antibacterial"
+    },
+    "weatheringItems": {
+      "uv": "UV Stabilized",
+      "weather": "Weather Resistant"
+    },
+    "appearanceItems": {
+      "highGloss": "High Gloss / Piano Black",
+      "antiSqueak": "Anti-squeak (NVH)",
+      "color": "Color Matching (RAL / Pantone)",
+      "custom": "Custom Formulation",
+      "oem": "OEM / ODM Support"
+    },
+    "items": {
+      "PA6": {
+        "name": "PA6",
+        "desc": "General-purpose nylon, good toughness"
+      },
+      "PA66": {
+        "name": "PA66",
+        "desc": "High strength & heat resistance"
+      },
+      "PP": {
+        "name": "PP",
+        "desc": "Cost-effective, versatile"
+      },
+      "ABS": {
+        "name": "ABS",
+        "desc": "Good impact resistance"
+      },
+      "PS": {
+        "name": "PS",
+        "desc": "Rigid, easy to process"
+      },
+      "PE": {
+        "name": "PE",
+        "desc": "Flexible, chemical resistant"
+      },
+      "PBT": {
+        "name": "PBT",
+        "desc": "Dimensional stability, low moisture"
+      },
+      "PC_ABS": {
+        "name": "PC/ABS",
+        "desc": "Impact + heat resistance blend"
+      }
+    }
+  },
+  "applications": {
+    "label": "Applications",
+    "title": "Trusted Across Industries",
+    "subtitle": "Our materials are specified in demanding applications worldwide.",
+    "items": {
+      "home": {
+        "title": "Home Appliances",
+        "desc": "Housings, internal parts, flame-retardant assemblies"
+      },
+      "auto": {
+        "title": "Automotive",
+        "desc": "Non-structural automotive parts, interior trim, clips & fasteners"
+      },
+      "construction": {
+        "title": "Construction",
+        "desc": "Pipes, fittings, weatherproof profiles"
+      },
+      "electronics": {
+        "title": "Consumer Electronics",
+        "desc": "Enclosures, connectors, aesthetic parts"
+      },
+      "industrial": {
+        "title": "Industrial Parts",
+        "desc": "Bearings, gears, conveyor components"
+      }
+    }
+  },
+  "capabilities": {
+    "label": "Our Capabilities",
+    "title": "BUILT FOR RELIABILITY & SCALE",
+    "subtitle": "From raw material to shipment — quality controlled at every step.",
+    "production": "Production Capacity",
+    "productionDesc": "20,000+ tons annual output across multiple extrusion lines",
+    "qcLab": "In-House QC Lab",
+    "qcLabDesc": "Full mechanical, thermal and rheological testing",
+    "leadTime": "Fast Lead Time",
+    "leadTimeDesc": "1 week for standard formulations, samples in 2 days",
+    "export": "Export Experience",
+    "exportDesc": "Support international customers from material development through mass production",
+    "certs": "Certifications",
+    "certsDesc": "ISO 9001 · SGS · ROHS · REACH · UL",
+    "support": "Technical Support",
+    "supportDesc": "Dedicated engineers for formulation & troubleshooting",
+    "established": "Established",
+    "annualOutput": "Tons Annual Output"
+  },
+  "cta": {
+    "label": "READY TO START?",
+    "title": "Let's Engineer Your Next Material",
+    "subtitle": "Send us your specifications, request a sample, or schedule a call with our engineering team.",
+    "requestQuote": "Request a Quote",
+    "sendSpec": "Send Your Spec Sheet",
+    "bookCall": "Book a Technical Call"
+  },
+  "footer": {
+    "company": "Ningbo Haishu Shengxin Plastic Co., Ltd.",
+    "addressL1": "Shuangjiang’an, Fengjia Village",
+    "addressL2": "Shiqi Subdistrict, Haishu District",
+    "addressL3": "Ningbo, Zhejiang",
+    "addressL4": "China",
+    "materials": "Materials",
+    "quickLinks": "Quick Links",
+    "contact": "Contact",
+    "copyright": "© 2026 Shengxin Plastic. All rights reserved.",
+    "location": "Ningbo, Zhejiang, China",
+    "im": "WhatsApp / WeChat",
+    "materialLink1": "Modified PP",
+    "materialLink2": "Modified PA",
+    "materialLink3": "Modified ABS",
+    "materialLink4": "Modified PC",
+    "materialLink5": "Engineering Plastics",
+    "quickLink1": "Applications",
+    "quickLink2": "Capabilities",
+    "quickLink3": "About Us",
+    "quickLink4": "Contact",
+    "quickLink5": "Get a Quote"
+  }
+}
