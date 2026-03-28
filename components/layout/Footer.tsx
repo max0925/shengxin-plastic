@@ -25,8 +25,8 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-primary text-white">
       {/* Main Footer Content */}
-      <div className="container-custom py-16 md:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
+      <div className="container-custom py-10 md:py-16 lg:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 lg:gap-12">
           {/* Column 1: Company Info */}
           <div className="space-y-4">
             <div className="font-title font-bold text-xl tracking-widest-custom mb-4">

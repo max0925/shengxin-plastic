@@ -43,7 +43,7 @@ const Applications: React.FC = () => {
           <div className="text-secondary text-sm font-bold tracking-widest-custom mb-3 uppercase">
             {t('label')}
           </div>
-          <h2 className="text-4xl font-bold text-text-dark mb-3 font-title">
+          <h2 className="text-3xl md:text-4xl font-bold text-text-dark mb-3 font-title">
             {t('title')}
           </h2>
           <p className="text-lg text-text-body max-w-2xl mx-auto">
@@ -52,14 +52,14 @@ const Applications: React.FC = () => {
         </div>
 
         {/* 图片网格 - 4px 间隔 */}
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-1">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-1">
           {applications.map((app) => (
             <div key={app.key} className="group relative overflow-hidden">
               {/* 图片撑满 */}
               <img
                 src={app.image}
                 alt={t(`items.${app.key}.title`)}
-                className="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-500"
+                className="w-full h-56 md:h-72 object-cover group-hover:scale-105 transition-transform duration-500"
               />
               {/* 底部渐变遮罩 */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />

@@ -31,23 +31,23 @@ export default function Materials() {
   return (
     <section id="materials">
       {/* 绿色背景上半部分 */}
-      <div className="bg-[#1B5E3A] pt-10 pb-32">
-        <div className="max-w-7xl mx-auto px-6">
+      <div className="bg-[#1B5E3A] pt-10 pb-24 md:pb-32">
+        <div className="max-w-7xl mx-auto px-4 md:px-6">
           <div className="w-10 h-[3px] bg-white/60 mb-3" />
           <p className="text-white/60 text-xs tracking-[0.2em] uppercase mb-3">{t('label')}</p>
-          <h2 className="text-white text-3xl font-extrabold uppercase tracking-wide leading-tight max-w-lg">
+          <h2 className="text-white text-xl md:text-2xl lg:text-3xl font-extrabold uppercase tracking-wide leading-tight max-w-lg">
             {t('title')}
           </h2>
         </div>
       </div>
 
       {/* 卡片区域 - 用负margin往上覆盖绿色区域 */}
-      <div className="max-w-7xl mx-auto px-6 -mt-24">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 -mt-12 md:-mt-24">
         <div className="relative flex items-center">
           {/* 左箭头 */}
           <button
             onClick={() => scroll('left')}
-            className="flex-shrink-0 text-[#1B5E3A] hover:text-[#00695C] transition mr-4 p-2"
+            className="hidden md:flex flex-shrink-0 text-[#1B5E3A] hover:text-[#00695C] transition mr-4 p-2"
           >
             <svg
               width="32"
@@ -66,12 +66,12 @@ export default function Materials() {
           {/* 滑页内容 */}
           <div
             ref={scrollRef}
-            className="flex gap-4 overflow-x-auto scrollbar-hide snap-x snap-mandatory flex-1"
+            className="flex gap-3 md:gap-4 overflow-x-auto scrollbar-hide snap-x snap-mandatory flex-1"
           >
             {materials.map((m) => (
-              <div key={m.name} className="snap-start flex-shrink-0 w-[200px]">
+              <div key={m.name} className="snap-start flex-shrink-0 w-[160px] md:w-[200px]">
                 {/* 图片区域 - 所有卡片完全一样的尺寸 */}
-                <div className="w-[200px] h-[200px] overflow-hidden bg-gray-700">
+                <div className="w-[160px] h-[160px] md:w-[200px] md:h-[200px] overflow-hidden bg-gray-700">
                   <img src={m.image} alt={m.name} className="w-full h-full object-cover" />
                 </div>
                 <div className="pt-3">
@@ -93,7 +93,7 @@ export default function Materials() {
           {/* 右箭头 */}
           <button
             onClick={() => scroll('right')}
-            className="flex-shrink-0 text-[#1B5E3A] hover:text-[#00695C] transition ml-4 p-2"
+            className="hidden md:flex flex-shrink-0 text-[#1B5E3A] hover:text-[#00695C] transition ml-4 p-2"
           >
             <svg
               width="32"
@@ -112,9 +112,9 @@ export default function Materials() {
       </div>
 
       {/* Modification Capabilities 部分 */}
-      <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12 py-12 bg-white">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-12 py-12 bg-white">
         <h3 className="text-lg font-bold text-text-dark mb-6">{t('capabilitiesLabel')}</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* 卡片 1: Mechanical & Structural */}
           <div className="bg-white rounded-lg overflow-hidden h-full">
             <div className="h-1 bg-[#1B5E3A]"></div>

@@ -8,7 +8,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { useRouter, usePathname } from 'next/navigation';
 
 const Navbar: React.FC = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
@@ -69,65 +69,66 @@ const Navbar: React.FC = () => {
             SHENGXIN
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Hamburger Button */}
           <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2"
+            className="lg:hidden text-white p-2"
+            onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
           >
-            {isMobileMenuOpen ? <XIcon size={24} /> : <MenuIcon size={24} />}
+            <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <line x1="3" y1="6" x2="21" y2="6"/>
+              <line x1="3" y1="12" x2="21" y2="12"/>
+              <line x1="3" y1="18" x2="21" y2="18"/>
+            </svg>
           </button>
         </div>
 
-        {/* Mobile Menu */}
-        <div
-          className={`lg:hidden overflow-hidden transition-all duration-300 ${isMobileMenuOpen ? 'max-h-96 mt-4' : 'max-h-0'
-            }`}
-        >
-          <div className="flex flex-col space-y-3 py-4 border-t border-white border-opacity-20">
+        {/* Mobile Fullscreen Menu */}
+        {menuOpen && (
+          <div className="fixed inset-0 bg-[#1B5E3A] z-50 flex flex-col items-center justify-center gap-8">
+            <button
+              className="absolute top-6 right-6 text-white p-2"
+              onClick={() => setMenuOpen(false)}
+              aria-label="Close menu"
+            >
+              <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+              </svg>
+            </button>
             <a
               href="#materials"
-              className="text-white hover:text-accent transition-colors duration-300 font-title font-medium uppercase text-[13px] tracking-[0.05em] py-2"
-              onClick={() => setIsMobileMenuOpen(false)}
+              className="text-white text-2xl font-semibold uppercase tracking-wide hover:text-accent transition"
+              onClick={() => setMenuOpen(false)}
             >
               {t('materials')}
             </a>
             <a
               href="#applications"
-              className="text-white hover:text-accent transition-colors duration-300 font-title font-medium uppercase text-[13px] tracking-[0.05em] py-2"
-              onClick={() => setIsMobileMenuOpen(false)}
+              className="text-white text-2xl font-semibold uppercase tracking-wide hover:text-accent transition"
+              onClick={() => setMenuOpen(false)}
             >
               {t('applications')}
             </a>
             <a
               href="#about"
-              className="text-white hover:text-accent transition-colors duration-300 font-title font-medium uppercase text-[13px] tracking-[0.05em] py-2"
-              onClick={() => setIsMobileMenuOpen(false)}
+              className="text-white text-2xl font-semibold uppercase tracking-wide hover:text-accent transition"
+              onClick={() => setMenuOpen(false)}
             >
               {t('about')}
             </a>
             <a
               href="#contact"
-              className="bg-white/10 text-white text-xs font-semibold tracking-[0.05em] uppercase px-5 py-2.5 hover:bg-white/20 transition text-center"
-              onClick={() => setIsMobileMenuOpen(false)}
+              className="text-white text-2xl font-semibold uppercase tracking-wide hover:text-accent transition"
+              onClick={() => setMenuOpen(false)}
             >
               {t('contact')}
             </a>
-
-            {/* 语言切换 - Mobile */}
             <button
-              onClick={switchLocale}
-              className="text-white/80 text-sm font-medium hover:text-white transition flex items-center justify-center gap-1.5 py-2"
+              onClick={() => { switchLocale(); setMenuOpen(false); }}
+              className="text-white/70 text-lg mt-4 flex items-center gap-2 hover:text-white transition"
             >
-              <svg
-                className="w-4 h-4"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="12" cy="12" r="10" />
                 <line x1="2" y1="12" x2="22" y2="12" />
                 <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
@@ -135,7 +136,7 @@ const Navbar: React.FC = () => {
               <span>{locale === 'en' ? '中文' : 'EN'}</span>
             </button>
           </div>
-        </div>
+        )}
       </div>
     </nav>
   );

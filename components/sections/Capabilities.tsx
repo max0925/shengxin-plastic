@@ -131,9 +131,9 @@ const Capabilities: React.FC = () => {
         </div>
 
         {/* 右侧 3/5：白色背景 + 地图 + 工厂图片 + 数字 */}
-        <div className="lg:col-span-3 bg-white relative flex flex-col">
+        <div className="lg:col-span-3 bg-white relative flex flex-col min-h-[450px] lg:min-h-0">
           {/* 地图背景层：撑满右侧上部，半透明 */}
-          <div className="flex-1 relative overflow-hidden">
+          <div className="flex-1 relative overflow-hidden min-h-[250px] lg:min-h-0">
             <img
               src="/map.png"
               alt=""
@@ -141,14 +141,14 @@ const Capabilities: React.FC = () => {
             />
 
             {/* 工厂图片 */}
-            <div className="absolute bottom-16 right-6 w-[55%] z-10">
-              <img src="/factory.jpg" alt="Shengxin factory" className="w-full" />
+            <div className="absolute bottom-6 md:bottom-16 right-4 w-[75%] md:w-[55%] z-10">
+              <img src="/factory.jpg" alt="Shengxin factory" className="w-full shadow-xl" />
             </div>
           </div>
 
           {/* 数字动画条 - 白色背景，大号彩色数字 */}
-          <div className="flex bg-white">
-            <div className="px-8 py-6 flex-1">
+          <div className="flex flex-col sm:flex-row bg-white border-t md:border-t-0 border-gray-100">
+            <div className="px-6 py-6 sm:px-8 flex-1 border-b sm:border-b-0 sm:border-r border-gray-100">
               <span
                 className="text-[#1B5E3A] text-5xl lg:text-6xl font-extrabold"
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
@@ -157,7 +157,7 @@ const Capabilities: React.FC = () => {
               </span>
               <p className="text-gray-500 text-sm mt-1 tracking-wide">{t('established')}</p>
             </div>
-            <div className="px-8 py-6 flex-1">
+            <div className="px-6 py-6 sm:px-8 flex-1">
               <span
                 className="text-[#FF8F00] text-5xl lg:text-6xl font-extrabold"
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
