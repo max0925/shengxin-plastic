@@ -1,37 +1,44 @@
 // Applications 板块 - 按行业展示应用场景
 
 import React from 'react';
+import Link from 'next/link';
 import SectionHeader from '@/components/ui/SectionHeader';
 import { CarIcon, HomeIcon, Building2Icon, SmartphoneIcon, CogIcon } from '@/components/ui/Icons';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 
 const Applications: React.FC = () => {
   const t = useTranslations('applications');
+  const locale = useLocale();
   const applications = [
     {
       icon: <HomeIcon size={48} className="text-secondary" />,
       key: 'home',
       image: '/HomeAppliances.jpg',
+      slug: 'home-appliances',
     },
     {
       icon: <CarIcon size={48} className="text-secondary" />,
       key: 'auto',
       image: '/Automotive.jpg',
+      slug: 'automotive',
     },
     {
       icon: <Building2Icon size={48} className="text-secondary" />,
       key: 'construction',
       image: '/Construction.jpg',
+      slug: 'construction',
     },
     {
       icon: <SmartphoneIcon size={48} className="text-secondary" />,
       key: 'electronics',
       image: '/ConsumerElectronics.jpg',
+      slug: 'consumer-electronics',
     },
     {
       icon: <CogIcon size={48} className="text-secondary" />,
       key: 'industrial',
       image: '/IndustrialParts.jpg',
+      slug: 'industrial-parts',
     },
   ];
 
@@ -54,7 +61,11 @@ const Applications: React.FC = () => {
         {/* 图片网格 - 4px 间隔 */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-1">
           {applications.map((app) => (
-            <div key={app.key} className="group relative overflow-hidden">
+            <Link
+              key={app.key}
+              href={`/${locale}/applications/${app.slug}`}
+              className="group relative overflow-hidden block"
+            >
               {/* 图片撑满 */}
               <img
                 src={app.image}
@@ -68,7 +79,7 @@ const Applications: React.FC = () => {
                 <h3 className="text-white text-lg md:text-xl font-bold mb-1">{t(`items.${app.key}.title`)}</h3>
                 <p className="text-white/70 text-xs md:text-sm">{t(`items.${app.key}.desc`)}</p>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

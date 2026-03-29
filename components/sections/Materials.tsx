@@ -79,12 +79,6 @@ export default function Materials() {
                     {m.name}
                   </h4>
                   <p className="text-xs text-[#37474F] mt-1 leading-relaxed">{t(`items.${m.descKey}.desc`)}</p>
-                  <a
-                    href="#"
-                    className="text-[#1B5E3A] text-xs font-semibold mt-2 inline-block hover:underline"
-                  >
-                    {t('readMore')}
-                  </a>
                 </div>
               </div>
             ))}
