@@ -241,17 +241,16 @@ function ProductCard({ product, locale }: { product: { name: string; image: stri
         className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
       />
 
-      {/* 半透明遮罩 - hover时显示 */}
-      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+      {/* 半透明黑色遮罩 */}
+      <div className="absolute inset-0 bg-black/30" />
 
       {/* 产品名称 - 左上角，直接叠在图片上 */}
       <div className="absolute top-4 left-4 z-10">
         <h3
-          className="text-[#1B5E3A] font-bold text-sm uppercase tracking-wider"
+          className="text-white font-bold text-sm uppercase tracking-wider"
           style={{
             fontFamily: "'Montserrat', sans-serif",
-            fontWeight: 700,
-            textShadow: '0 1px 3px rgba(255,255,255,0.7)'
+            fontWeight: 700
           }}
         >
           {product.name}
@@ -262,10 +261,9 @@ function ProductCard({ product, locale }: { product: { name: string; image: stri
       <div className="absolute bottom-4 right-4 z-10">
         <svg
           className="w-8 h-8 group-hover:translate-x-1 group-hover:translate-y-1 transition-transform duration-300"
-          style={{ filter: 'drop-shadow(0 1px 2px rgba(255,255,255,0.7))' }}
           viewBox="0 0 24 24"
           fill="none"
-          stroke="#1B5E3A"
+          stroke="white"
           strokeWidth="1.5"
           strokeLinecap="round"
           strokeLinejoin="round"
