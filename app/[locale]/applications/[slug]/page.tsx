@@ -4,13 +4,13 @@ import Link from 'next/link';
 
 // Home Appliances 产品数据
 const homeApplianceProducts = [
-  { name: 'Air Conditioner', image: '/HomeAppliances/AirConditioner.jpg' },
-  { name: 'LED Lighting', image: '/HomeAppliances/LEDLighting.jpg' },
-  { name: 'Audio Systems', image: '/HomeAppliances/AudioSystems.jpg' },
-  { name: 'Dishwasher', image: '/HomeAppliances/Dishwasher.jpg' },
-  { name: 'Oven', image: '/HomeAppliances/Oven.jpg' },
-  { name: 'Television', image: '/HomeAppliances/Television.jpg' },
-  { name: 'Induction Cooker', image: '/HomeAppliances/InductionCooker.jpg' },
+  { name: 'Air Conditioner', image: '/HomeAppliances/AirConditioner.jpg', link: 'air-conditioner' },
+  { name: 'LED Lighting', image: '/HomeAppliances/LEDLighting.jpg', link: null },
+  { name: 'Audio Systems', image: '/HomeAppliances/AudioSystems.jpg', link: null },
+  { name: 'Dishwasher', image: '/HomeAppliances/Dishwasher.jpg', link: null },
+  { name: 'Oven', image: '/HomeAppliances/Oven.jpg', link: null },
+  { name: 'Television', image: '/HomeAppliances/Television.jpg', link: null },
+  { name: 'Induction Cooker', image: '/HomeAppliances/InductionCooker.jpg', link: null },
 ];
 
 const applicationData: Record<string, { title: string; description: string; image: string; details: string[] }> = {
@@ -120,29 +120,29 @@ export default function ApplicationPage({ params }: { params: { slug: string; lo
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 md:gap-2">
               {/* 第一行：2个卡片 (各占50%) - Air Conditioner, LED Lighting */}
               <div className="md:col-span-1 lg:col-span-1">
-                <ProductCard product={homeApplianceProducts[0]} />
+                <ProductCard product={homeApplianceProducts[0]} locale={params.locale} />
               </div>
               <div className="md:col-span-1 lg:col-span-2">
-                <ProductCard product={homeApplianceProducts[1]} />
+                <ProductCard product={homeApplianceProducts[1]} locale={params.locale} />
               </div>
 
               {/* 第二行：2个卡片 (各占50%) - Audio Systems, Dishwasher */}
               <div className="md:col-span-1 lg:col-span-2">
-                <ProductCard product={homeApplianceProducts[2]} />
+                <ProductCard product={homeApplianceProducts[2]} locale={params.locale} />
               </div>
               <div className="md:col-span-1 lg:col-span-1">
-                <ProductCard product={homeApplianceProducts[3]} />
+                <ProductCard product={homeApplianceProducts[3]} locale={params.locale} />
               </div>
 
               {/* 第三行：3个卡片 (各占33%) - Oven, Television, Induction Cooker */}
               <div className="md:col-span-1 lg:col-span-1">
-                <ProductCard product={homeApplianceProducts[4]} />
+                <ProductCard product={homeApplianceProducts[4]} locale={params.locale} />
               </div>
               <div className="md:col-span-1 lg:col-span-1">
-                <ProductCard product={homeApplianceProducts[5]} />
+                <ProductCard product={homeApplianceProducts[5]} locale={params.locale} />
               </div>
               <div className="md:col-span-2 lg:col-span-1">
-                <ProductCard product={homeApplianceProducts[6]} />
+                <ProductCard product={homeApplianceProducts[6]} locale={params.locale} />
               </div>
             </div>
 
@@ -231,9 +231,9 @@ export default function ApplicationPage({ params }: { params: { slug: string; lo
 }
 
 // 产品卡片组件
-function ProductCard({ product }: { product: { name: string; image: string } }) {
-  return (
-    <div className="group relative overflow-hidden h-64 md:h-80 lg:h-96">
+function ProductCard({ product, locale }: { product: { name: string; image: string; link: string | null }; locale: string }) {
+  const cardContent = (
+    <>
       {/* 产品图片 - 撑满整个卡片 */}
       <img
         src={product.image}
@@ -274,6 +274,20 @@ function ProductCard({ product }: { product: { name: string; image: string } }) 
           <polyline points="12 5 19 12 12 19" />
         </svg>
       </div>
+    </>
+  );
+
+  if (product.link) {
+    return (
+      <Link href={`/${locale}/applications/home-appliances/${product.link}`} className="group relative overflow-hidden h-64 md:h-80 lg:h-96 block">
+        {cardContent}
+      </Link>
+    );
+  }
+
+  return (
+    <div className="group relative overflow-hidden h-64 md:h-80 lg:h-96">
+      {cardContent}
     </div>
   );
 }
