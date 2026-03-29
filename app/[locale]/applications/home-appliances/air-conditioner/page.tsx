@@ -6,33 +6,28 @@ import Link from 'next/link';
 const components = [
   {
     image: '/HomeAppliances/A1.jpg',
-    nameEn: 'Wind Wheel',
-    nameZh: '风叶',
-    material: 'PP with glass fiber, high dimensional stability',
+    name: 'Cross Flow Fan Blade',
+    material: 'AS + Reinforced / High rigidity / Dimensional stability / Heat resistant / Low warpage',
   },
   {
     image: '/HomeAppliances/A2.jpg',
-    nameEn: 'Drain Pump',
-    nameZh: '排水泵',
-    material: 'PP with impact modification, chemical resistant',
+    name: 'Outdoor Unit Cover',
+    material: 'PP + Weather resistant / Flame retardant / Anti-aging',
   },
   {
     image: '/HomeAppliances/A3.jpg',
-    nameEn: 'Filter Frame',
-    nameZh: '过滤网框',
-    material: 'ABS flame retardant, UL94 V0',
+    name: 'Motor Press Cover',
+    material: 'PP + Reinforced / High temperature / High rigidity',
   },
   {
     image: '/HomeAppliances/A4.jpg',
-    nameEn: 'Bracket',
-    nameZh: '支架',
-    material: 'PA66 GF30, high temperature resistant',
+    name: 'Electrical Control Box',
+    material: 'PA6 + Flame retardant / High temperature / Electrical insulation',
   },
   {
     image: '/HomeAppliances/A5.jpg',
-    nameEn: 'Cross Flow Fan',
-    nameZh: '贯流风扇',
-    material: 'AS/ABS with UV stabilization',
+    name: 'Indoor Air Guide Vane',
+    material: 'PC + Heat resistant / High rigidity / Impact modified',
   },
 ];
 
@@ -114,7 +109,7 @@ export default function AirConditionerPage({ params }: { params: { locale: strin
                 <div className="aspect-square overflow-hidden">
                   <img
                     src={component.image}
-                    alt={component.nameEn}
+                    alt={component.name}
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -122,8 +117,7 @@ export default function AirConditionerPage({ params }: { params: { locale: strin
                 {/* 零部件信息 */}
                 <div className="p-6">
                   <h3 className="text-lg font-bold text-[#1C2B25] mb-2">
-                    {component.nameEn}
-                    <span className="text-gray-500 text-sm font-normal ml-2">/ {component.nameZh}</span>
+                    {component.name}
                   </h3>
                   <p className="text-sm text-[#37474F] leading-relaxed">{component.material}</p>
                 </div>
