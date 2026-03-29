@@ -79,7 +79,6 @@ const applicationData: Record<string, { title: string; description: string; imag
 
 export default async function ApplicationPage({ params }: { params: { slug: string; locale: string } }) {
   const data = applicationData[params.slug];
-  const t = await getTranslations('homeAppliances');
 
   if (!data) {
     return (
@@ -96,6 +95,9 @@ export default async function ApplicationPage({ params }: { params: { slug: stri
 
   // Home Appliances 专用布局
   if (params.slug === 'home-appliances') {
+    // 只为 home-appliances 加载翻译
+    const t = await getTranslations('homeAppliances');
+
     // 将产品数据转换为包含翻译名称的格式
     const translatedProducts = homeApplianceProducts.map(product => ({
       name: t(product.key),
