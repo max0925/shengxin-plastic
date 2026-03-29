@@ -195,5 +195,28 @@
     "ctaText": "我们提供根据您的具体规格和测试要求定制的配方。",
     "requestQuote": "获取报价",
     "backToAppliances": "返回家用电器"
+  },
+  "about": {
+    "title": "关于我们",
+    "breadcrumbAbout": "关于我们",
+    "breadcrumbBack": "返回首页",
+    "label": "关于我们",
+    "mainTitle": "对质量和创新的坚定承诺驱使我们提供高性能改性塑料",
+    "yearsExperience": "37+ 年行业经验",
+    "annualOutput": "20,000+ 吨年产量",
+    "customersServed": "500+ 客户服务",
+    "learnMore": "了解更多",
+    "paragraph1": "宁波市海曙盛欣塑化有限公司成立于1989年，是一家专业从事改性塑料研发、生产和销售的制造企业。凭借超过37年的行业经验，我们已在全球范围内建立了提供工程级热塑性解决方案的良好声誉。",
+    "paragraph2": "公司位于浙江省宁波市，拥有现代化生产基地，配备先进的双螺杆挤出生产线、自有品控实验室和专属研发团队。年产改性塑料20,000余吨，产品广泛应用于家电、汽车、建材、消费电子和工业制造等领域。",
+    "excellenceTitle": "卓越品质使我们脱颖而出",
+    "qualityLabel": "质量",
+    "qualityPercent": "99.8%",
+    "deliveryLabel": "准时交付",
+    "deliveryPercent": "95%",
+    "certifications": "认证资质：ISO 9001 · SGS · ROHS · REACH · UL",
+    "excellenceText": "我们将数十年的配方经验与现代制造技术相结合。每一批次产品都经过严格检测——从原材料检验到成品认证。",
+    "ctaTitle": "准备与我们合作？",
+    "requestQuote": "获取报价",
+    "contactUs": "联系我们"
   }
 }

@@ -42,9 +42,9 @@ const Navbar: React.FC = () => {
                 <a href="#applications" className="text-white/80 text-sm font-medium tracking-[0.05em] uppercase hover:text-white transition">
                   {t('applications')}
                 </a>
-                <a href="#about" className="text-white/80 text-sm font-medium tracking-[0.05em] uppercase hover:text-white transition">
+                <Link href={`/${locale}/about`} className="text-white/80 text-sm font-medium tracking-[0.05em] uppercase hover:text-white transition">
                   {t('about')}
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -111,13 +111,13 @@ const Navbar: React.FC = () => {
             >
               {t('applications')}
             </a>
-            <a
-              href="#about"
+            <Link
+              href={`/${locale}/about`}
               className="text-white text-2xl font-semibold uppercase tracking-wide hover:text-accent transition"
               onClick={() => setMenuOpen(false)}
             >
               {t('about')}
-            </a>
+            </Link>
             <a
               href="#contact"
               className="text-white text-2xl font-semibold uppercase tracking-wide hover:text-accent transition"

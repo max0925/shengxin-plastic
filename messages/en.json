@@ -195,5 +195,28 @@
     "ctaText": "We provide custom formulations tailored to your exact specifications and testing requirements.",
     "requestQuote": "Request a Quote",
     "backToAppliances": "Back to Home Appliances"
+  },
+  "about": {
+    "title": "ABOUT US",
+    "breadcrumbAbout": "About Us",
+    "breadcrumbBack": "Back Home",
+    "label": "ABOUT US",
+    "mainTitle": "OUR UNWAVERING COMMITMENT TO QUALITY AND INNOVATION DRIVES US TO DELIVER HIGH-PERFORMANCE MODIFIED PLASTICS",
+    "yearsExperience": "37+ Years Experience",
+    "annualOutput": "20,000+ Tons Annual Output",
+    "customersServed": "500+ Customers Served",
+    "learnMore": "Learn More",
+    "paragraph1": "Founded in 1989, Ningbo Haishu Shengxin Plastic Co., Ltd. is a professional manufacturer specializing in the research, development, production, and sales of modified plastic compounds. With over 37 years of industry experience, we have built a reputation for delivering engineering-grade thermoplastic solutions to customers worldwide.",
+    "paragraph2": "Our facility in Ningbo, Zhejiang covers a modern production area equipped with advanced twin-screw extrusion lines, in-house QC laboratory, and dedicated R&D capabilities. We produce 20,000+ tons of modified plastics annually, serving industries including home appliances, automotive, construction, consumer electronics, and industrial manufacturing.",
+    "excellenceTitle": "EXCELLENCE THAT SETS US APART",
+    "qualityLabel": "QUALITY",
+    "qualityPercent": "99.8%",
+    "deliveryLabel": "ON-TIME DELIVERY",
+    "deliveryPercent": "95%",
+    "certifications": "CERTIFICATIONS: ISO 9001 · SGS · ROHS · REACH · UL",
+    "excellenceText": "We combine decades of formulation expertise with modern manufacturing technology. Every batch undergoes rigorous testing — from raw material inspection to final product certification.",
+    "ctaTitle": "Ready to Work With Us?",
+    "requestQuote": "Request a Quote",
+    "contactUs": "Contact Us"
   }
 }
