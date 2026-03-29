@@ -233,35 +233,38 @@ export default function ApplicationPage({ params }: { params: { slug: string; lo
 // 产品卡片组件
 function ProductCard({ product }: { product: { name: string; image: string } }) {
   return (
-    <div className="group relative bg-gray-100 hover:bg-gray-200 transition-colors duration-300 h-64 md:h-80 lg:h-96 overflow-hidden">
-      {/* 产品名称 - 左上角 */}
+    <div className="group relative overflow-hidden h-64 md:h-80 lg:h-96">
+      {/* 产品图片 - 撑满整个卡片 */}
+      <img
+        src={product.image}
+        alt={product.name}
+        className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+      />
+
+      {/* 半透明遮罩 - hover时显示 */}
+      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+
+      {/* 产品名称 - 左上角，叠在图片上 */}
       <div className="absolute top-4 left-4 z-10">
-        <h3 className="text-[#1B5E3A] font-bold text-lg md:text-xl">{product.name}</h3>
+        <h3 className="text-[#1B5E3A] font-bold text-lg md:text-xl bg-white/90 px-3 py-1.5 rounded">{product.name}</h3>
       </div>
 
-      {/* 产品图片 - 中间 */}
-      <div className="absolute inset-0 flex items-center justify-center p-4 md:p-6">
-        <img
-          src={product.image}
-          alt={product.name}
-          className="w-full h-full object-contain"
-        />
-      </div>
-
-      {/* 箭头 - 右下角 */}
+      {/* 箭头 - 右下角，叠在图片上 */}
       <div className="absolute bottom-4 right-4 z-10">
-        <svg
-          className="w-6 h-6 md:w-8 md:h-8 text-[#1B5E3A] group-hover:translate-x-1 group-hover:translate-y-1 transition-transform duration-300"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <line x1="5" y1="12" x2="19" y2="12" />
-          <polyline points="12 5 19 12 12 19" />
-        </svg>
+        <div className="bg-white/90 p-2 rounded-full">
+          <svg
+            className="w-5 h-5 md:w-6 md:h-6 text-[#1B5E3A] group-hover:translate-x-1 group-hover:translate-y-1 transition-transform duration-300"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </svg>
+        </div>
       </div>
     </div>
   );
