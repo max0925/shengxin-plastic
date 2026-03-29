@@ -111,10 +111,10 @@ export default function ApplicationPage({ params }: { params: { slug: string; lo
         {/* 产品网格区域 */}
         <section className="py-12 md:py-16 lg:py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 md:px-6">
-            {/* 标题 */}
-            <h2 className="text-3xl md:text-4xl font-extrabold text-[#1B5E3A] mb-8 md:mb-12 uppercase tracking-wide">
-              Products
-            </h2>
+            {/* Overview 文字 */}
+            <p className="text-[#37474F] text-base md:text-lg leading-relaxed max-w-3xl mb-10">
+              We supply flame-retardant, impact-modified, and high-gloss compounds for major appliance manufacturers — from structural housings to aesthetic exterior panels.
+            </p>
 
             {/* Bento Grid 布局 */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 md:gap-2">
