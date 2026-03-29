@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
+import AboutStats from '@/components/about/AboutStats';
 
 export const dynamic = 'force-dynamic';
 
@@ -10,19 +11,32 @@ export default async function AboutPage({ params }: { params: { locale: string }
 
   return (
     <main className="bg-white">
-      {/* Hero 区域 - 深绿色背景 */}
-      <section className="bg-[#1B5E3A] py-16 md:py-20">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 text-center">
+      {/* Hero 区域 - factory.jpg 背景 + 遮罩 */}
+      <section className="relative py-16 md:py-20">
+        {/* 背景图片 */}
+        <img
+          src="/factory.jpg"
+          alt="Factory"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        {/* 暗化遮罩 */}
+        <div className="absolute inset-0 bg-black/50" />
+
+        {/* 内容 */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 text-center">
           <h1
             className="text-white text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 uppercase tracking-wide"
             style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 800 }}
           >
             {t('title')}
           </h1>
-          <nav className="flex items-center justify-center gap-2 text-sm text-white/70">
-            <span>{t('breadcrumbAbout')}</span>
-            <span>›</span>
-            <Link href={`/${params.locale}`} className="hover:text-white transition">
+          <nav className="flex items-center justify-center gap-3">
+            <span className="text-white/70 text-sm">{t('breadcrumbAbout')}</span>
+            <span className="text-white/70">›</span>
+            <Link
+              href={`/${params.locale}`}
+              className="border-2 border-white text-white px-6 py-2 font-bold text-sm rounded hover:bg-white hover:text-[#1B5E3A] transition"
+            >
               {t('breadcrumbBack')}
             </Link>
           </nav>
@@ -42,27 +56,18 @@ export default async function AboutPage({ params }: { params: { locale: string }
 
               {/* 标题 */}
               <h2
-                className="text-[#1B5E3A] text-2xl md:text-3xl lg:text-4xl font-extrabold mb-8 uppercase leading-tight"
+                className="text-[#1B5E3A] text-2xl lg:text-3xl font-extrabold mb-8 uppercase leading-relaxed"
                 style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 800 }}
               >
                 {t('mainTitle')}
               </h2>
 
-              {/* 三个数据 */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-                <div className="text-center sm:text-left">
-                  <div className="text-[#FF8F00] text-3xl font-bold mb-1">37+</div>
-                  <div className="text-[#37474F] text-xs uppercase tracking-wide">{t('yearsExperience')}</div>
-                </div>
-                <div className="text-center sm:text-left">
-                  <div className="text-[#FF8F00] text-3xl font-bold mb-1">20,000+</div>
-                  <div className="text-[#37474F] text-xs uppercase tracking-wide">{t('annualOutput')}</div>
-                </div>
-                <div className="text-center sm:text-left">
-                  <div className="text-[#FF8F00] text-3xl font-bold mb-1">500+</div>
-                  <div className="text-[#37474F] text-xs uppercase tracking-wide">{t('customersServed')}</div>
-                </div>
-              </div>
+              {/* 三个数据 - 带动画 */}
+              <AboutStats
+                yearsText={t('yearsExperience')}
+                outputText={t('annualOutput')}
+                customersText={t('customersServed')}
+              />
 
               {/* 段落 */}
               <div className="space-y-4 text-[#37474F] text-base leading-relaxed mb-8">
@@ -70,19 +75,19 @@ export default async function AboutPage({ params }: { params: { locale: string }
                 <p>{t('paragraph2')}</p>
               </div>
 
-              {/* Learn More 按钮 */}
+              {/* Contact Us 按钮 */}
               <Link
                 href={`/${params.locale}/#contact`}
                 className="inline-block bg-[#FF8F00] text-white px-8 py-3 font-semibold rounded hover:bg-[#F57C00] transition"
               >
-                {t('learnMore')}
+                {t('contactUs')}
               </Link>
             </div>
 
             {/* 右侧：工厂图片 */}
             <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
               <img
-                src="/factory.jpg"
+                src="/unnamed-3.jpg"
                 alt="Factory"
                 className="w-full h-full object-cover"
               />
