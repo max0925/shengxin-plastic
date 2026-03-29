@@ -3,6 +3,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { MenuIcon, XIcon } from '@/components/ui/Icons';
 import { useLocale, useTranslations } from 'next-intl';
 import { useRouter, usePathname } from 'next/navigation';
@@ -29,9 +30,9 @@ const Navbar: React.FC = () => {
           <div className="hidden lg:flex items-center justify-between w-full">
             {/* Left Box: Logo + Nav Items */}
             <div className="flex items-center gap-12 flex-1">
-              <span className="text-white text-xl font-extrabold tracking-[0.15em] uppercase">
+              <Link href={`/${locale}`} className="text-white text-xl font-extrabold tracking-[0.15em] uppercase hover:text-white/90 transition">
                 SHENGXIN
-              </span>
+              </Link>
 
               {/* Navigation Links */}
               <div className="flex items-center gap-8">
@@ -65,9 +66,9 @@ const Navbar: React.FC = () => {
           </div>
 
           {/* Mobile Logo */}
-          <div className="lg:hidden text-white text-xl font-extrabold tracking-[0.15em] uppercase">
+          <Link href={`/${locale}`} className="lg:hidden text-white text-xl font-extrabold tracking-[0.15em] uppercase">
             SHENGXIN
-          </div>
+          </Link>
 
           {/* Mobile Hamburger Button */}
           <button
