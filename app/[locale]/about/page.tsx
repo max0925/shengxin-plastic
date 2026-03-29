@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
-import AboutStats from '@/components/about/AboutStats';
 
 export const dynamic = 'force-dynamic';
 
@@ -12,7 +11,7 @@ export default async function AboutPage({ params }: { params: { locale: string }
   return (
     <main className="bg-white">
       {/* Hero 区域 - factory.jpg 背景 + 遮罩 */}
-      <section className="relative h-[45vh] min-h-[350px]">
+      <section className="relative h-[55vh] min-h-[450px]">
         {/* 背景图片 */}
         <img
           src="/factory.jpg"
@@ -20,7 +19,7 @@ export default async function AboutPage({ params }: { params: { locale: string }
           className="absolute inset-0 w-full h-full object-cover"
         />
         {/* 暗化遮罩 */}
-        <div className="absolute inset-0 bg-black/50" />
+        <div className="absolute inset-0 bg-black/65" />
 
         {/* 内容 */}
         <div className="relative z-10 h-full flex flex-col items-center justify-center max-w-7xl mx-auto px-4 md:px-6 text-center">
@@ -44,54 +43,64 @@ export default async function AboutPage({ params }: { params: { locale: string }
       </section>
 
       {/* 公司简介区 - 白色背景 */}
-      <section className="py-12 md:py-16 lg:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
-            {/* 左侧：文字区 */}
-            <div>
-              {/* 小标签 */}
-              <div className="text-[#00695C] text-xs font-bold tracking-[0.2em] uppercase mb-4">
-                {t('label')}
-              </div>
-
-              {/* 标题 */}
-              <h2
-                className="text-[#1B5E3A] text-2xl lg:text-3xl font-extrabold mb-8 uppercase leading-relaxed"
-                style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 800 }}
-              >
-                {t('mainTitle')}
-              </h2>
-
-              {/* 三个数据 - 带动画 */}
-              <AboutStats
-                yearsText={t('yearsExperience')}
-                outputText={t('annualOutput')}
-                customersText={t('customersServed')}
-              />
-
-              {/* 段落 */}
-              <div className="space-y-4 text-[#37474F] text-base leading-relaxed mb-8">
-                <p>{t('paragraph1')}</p>
-                <p>{t('paragraph2')}</p>
-              </div>
-
-              {/* Contact Us 按钮 */}
-              <Link
-                href={`/${params.locale}/#contact`}
-                className="inline-block bg-[#1B5E3A] text-white px-8 py-3 font-semibold rounded hover:bg-[#00695C] transition"
-              >
-                {t('contactUs')}
-              </Link>
+      <section className="bg-white">
+        <div className="grid grid-cols-1 lg:grid-cols-2">
+          {/* 左侧：文字区 */}
+          <div className="py-12 md:py-16 lg:py-20 px-6 md:px-12 lg:px-16 flex flex-col justify-center">
+            {/* 小标签 */}
+            <div className="text-[#00695C] text-xs font-bold tracking-[0.2em] uppercase mb-4">
+              {t('label')}
             </div>
 
-            {/* 右侧：工厂图片 */}
-            <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
-              <img
-                src="/unnamed-3.jpg"
-                alt="Factory"
-                className="w-full h-full object-cover"
-              />
+            {/* 标题 */}
+            <h2
+              className="text-[#1B5E3A] text-3xl lg:text-4xl font-extrabold mb-8 leading-tight"
+              style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 800 }}
+            >
+              {t('mainTitle')}
+            </h2>
+
+            {/* 段落 */}
+            <div className="space-y-4 text-[#37474F] text-base leading-relaxed mb-8">
+              <p>{t('paragraph1')}</p>
+              <p>{t('paragraph2')}</p>
             </div>
+
+            {/* 分隔线 */}
+            <div className="w-16 h-0.5 bg-[#1B5E3A] mb-8"></div>
+
+            {/* 三个图标关键词 */}
+            <div className="flex flex-wrap gap-8 mb-8">
+              <div className="flex items-center gap-2">
+                <span className="text-2xl">🏭</span>
+                <span className="text-[#1B5E3A] font-bold text-sm">{t('iconRnd')}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-2xl">🔬</span>
+                <span className="text-[#1B5E3A] font-bold text-sm">{t('iconQuality')}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-2xl">🌍</span>
+                <span className="text-[#1B5E3A] font-bold text-sm">{t('iconGlobal')}</span>
+              </div>
+            </div>
+
+            {/* Contact Us 按钮 */}
+            <Link
+              href={`/${params.locale}/#contact`}
+              className="inline-block bg-[#1B5E3A] text-white px-8 py-3 font-semibold rounded hover:bg-[#00695C] transition w-fit"
+            >
+              {t('contactUs')}
+            </Link>
+          </div>
+
+          {/* 右侧：工厂图片 - 撑满整个右半部分 */}
+          <div className="relative h-full min-h-[400px] lg:min-h-0">
+            <img
+              src="/unnamed-3.jpg"
+              alt="Factory"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
           </div>
         </div>
       </section>
