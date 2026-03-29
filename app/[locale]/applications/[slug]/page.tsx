@@ -247,11 +247,11 @@ function ProductCard({ product }: { product: { name: string; image: string } }) 
       {/* 产品名称 - 左上角，直接叠在图片上 */}
       <div className="absolute top-4 left-4 z-10">
         <h3
-          className="text-white font-bold text-sm uppercase tracking-wider"
+          className="text-[#1B5E3A] font-bold text-sm uppercase tracking-wider"
           style={{
             fontFamily: "'Montserrat', sans-serif",
             fontWeight: 700,
-            textShadow: '0 1px 3px rgba(0,0,0,0.3)'
+            textShadow: '0 1px 3px rgba(255,255,255,0.7)'
           }}
         >
           {product.name}
@@ -261,11 +261,11 @@ function ProductCard({ product }: { product: { name: string; image: string } }) 
       {/* 箭头 - 右下角，直接叠在图片上 */}
       <div className="absolute bottom-4 right-4 z-10">
         <svg
-          className="w-8 h-8 text-white group-hover:translate-x-1 group-hover:translate-y-1 transition-transform duration-300"
-          style={{ filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.4))' }}
+          className="w-8 h-8 group-hover:translate-x-1 group-hover:translate-y-1 transition-transform duration-300"
+          style={{ filter: 'drop-shadow(0 1px 2px rgba(255,255,255,0.7))' }}
           viewBox="0 0 24 24"
           fill="none"
-          stroke="currentColor"
+          stroke="#1B5E3A"
           strokeWidth="1.5"
           strokeLinecap="round"
           strokeLinejoin="round"
