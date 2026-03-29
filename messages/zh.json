@@ -157,5 +157,43 @@
     "quickLink3": "关于我们",
     "quickLink4": "联系我们",
     "quickLink5": "获取报价"
+  },
+  "homeAppliances": {
+    "title": "家用电器",
+    "overview": "我们为主要家电制造商提供阻燃、增韧和高光泽改性塑料——从结构件外壳到外观面板。",
+    "airConditioner": "空调",
+    "ledLighting": "LED照明",
+    "audioSystems": "音响系统",
+    "dishwasher": "洗碗机",
+    "oven": "烤箱",
+    "television": "电视",
+    "inductionCooker": "电磁炉",
+    "ctaText": "需要定制家电材料？",
+    "requestQuote": "获取报价",
+    "viewMaterials": "查看所有材料"
+  },
+  "airConditioner": {
+    "title": "空调",
+    "home": "首页",
+    "applications": "应用领域",
+    "homeAppliances": "家用电器",
+    "description1": "我们为空调制造商提供高性能改性塑料，满足阻燃、抗冲击、耐热变形和尺寸稳定等严格要求。",
+    "description2": "我们的材料应用于关键结构部件、风道系统和外壳——在持续运行和温度循环条件下提供可靠性能。",
+    "description3": "从室内机到室外机外壳，我们提供符合 UL、IEC 和行业特定认证的材料。",
+    "keyComponents": "核心零部件",
+    "a1Name": "贯流风叶",
+    "a1Desc": "AS + 增强 / 高刚性 / 尺寸稳定 / 耐热 / 低变形",
+    "a2Name": "外机盖板",
+    "a2Desc": "PP + 耐候 / 阻燃 / 耐老化",
+    "a3Name": "电机压盖",
+    "a3Desc": "PP + 增强 / 耐高温 / 高刚性",
+    "a4Name": "电控盒",
+    "a4Desc": "PA6 + 阻燃 / 耐高温 / 电绝缘",
+    "a5Name": "内机导风叶片",
+    "a5Desc": "PC + 耐热 / 高刚性 / 耐冲击",
+    "ctaTitle": "需要空调零部件的材料方案？",
+    "ctaText": "我们提供根据您的具体规格和测试要求定制的配方。",
+    "requestQuote": "获取报价",
+    "backToAppliances": "返回家用电器"
   }
 }

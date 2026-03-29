@@ -1,37 +1,40 @@
 // Air Conditioner 详情页面
 
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
-// 零部件数据
+// 零部件数据 - 使用 key 来对应翻译
 const components = [
   {
     image: '/HomeAppliances/A1.jpg',
-    name: 'Cross Flow Fan Blade',
-    material: 'AS + Reinforced / High rigidity / Dimensional stability / Heat resistant / Low warpage',
+    nameKey: 'a1Name',
+    descKey: 'a1Desc',
   },
   {
     image: '/HomeAppliances/A2.jpg',
-    name: 'Outdoor Unit Cover',
-    material: 'PP + Weather resistant / Flame retardant / Anti-aging',
+    nameKey: 'a2Name',
+    descKey: 'a2Desc',
   },
   {
     image: '/HomeAppliances/A3.jpg',
-    name: 'Motor Press Cover',
-    material: 'PP + Reinforced / High temperature / High rigidity',
+    nameKey: 'a3Name',
+    descKey: 'a3Desc',
   },
   {
     image: '/HomeAppliances/A4.jpg',
-    name: 'Electrical Control Box',
-    material: 'PA6 + Flame retardant / High temperature / Electrical insulation',
+    nameKey: 'a4Name',
+    descKey: 'a4Desc',
   },
   {
     image: '/HomeAppliances/A5.jpg',
-    name: 'Indoor Air Guide Vane',
-    material: 'PC + Heat resistant / High rigidity / Impact modified',
+    nameKey: 'a5Name',
+    descKey: 'a5Desc',
   },
 ];
 
 export default function AirConditionerPage({ params }: { params: { locale: string } }) {
+  const t = useTranslations('airConditioner');
+
   return (
     <main className="bg-white">
       {/* 面包屑导航 */}
@@ -39,18 +42,18 @@ export default function AirConditionerPage({ params }: { params: { locale: strin
         <div className="max-w-7xl mx-auto px-4 md:px-6">
           <nav className="flex items-center gap-2 text-sm text-gray-600">
             <Link href={`/${params.locale}`} className="hover:text-[#1B5E3A] transition">
-              Home
+              {t('home')}
             </Link>
             <span>/</span>
             <Link href={`/${params.locale}/#applications`} className="hover:text-[#1B5E3A] transition">
-              Applications
+              {t('applications')}
             </Link>
             <span>/</span>
             <Link href={`/${params.locale}/applications/home-appliances`} className="hover:text-[#1B5E3A] transition">
-              Home Appliances
+              {t('homeAppliances')}
             </Link>
             <span>/</span>
-            <span className="text-[#1B5E3A] font-semibold">Air Conditioner</span>
+            <span className="text-[#1B5E3A] font-semibold">{t('title')}</span>
           </nav>
         </div>
       </section>
@@ -74,17 +77,17 @@ export default function AirConditionerPage({ params }: { params: { locale: strin
                 className="text-4xl md:text-5xl font-extrabold text-[#1B5E3A] mb-6 uppercase tracking-wide"
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
               >
-                Air Conditioner
+                {t('title')}
               </h1>
               <div className="space-y-4 text-[#37474F] leading-relaxed">
                 <p className="text-base md:text-lg">
-                  We supply high-performance modified plastics for air conditioner manufacturers, meeting strict requirements for flame retardancy, impact resistance, heat deflection, and dimensional stability.
+                  {t('description1')}
                 </p>
                 <p className="text-base md:text-lg">
-                  Our compounds are used in critical structural components, airflow systems, and housings — providing reliable performance under continuous operation and temperature cycling.
+                  {t('description2')}
                 </p>
                 <p className="text-base md:text-lg">
-                  From indoor units to outdoor enclosures, we deliver materials that meet UL, IEC, and industry-specific certifications.
+                  {t('description3')}
                 </p>
               </div>
             </div>
@@ -99,7 +102,7 @@ export default function AirConditionerPage({ params }: { params: { locale: strin
             className="text-3xl md:text-4xl font-extrabold text-[#1B5E3A] mb-10 md:mb-12 uppercase tracking-wide"
             style={{ fontFamily: "'Montserrat', sans-serif" }}
           >
-            Key Components
+            {t('keyComponents')}
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
@@ -109,7 +112,7 @@ export default function AirConditionerPage({ params }: { params: { locale: strin
                 <div className="aspect-square overflow-hidden">
                   <img
                     src={component.image}
-                    alt={component.name}
+                    alt={t(component.nameKey)}
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -117,9 +120,9 @@ export default function AirConditionerPage({ params }: { params: { locale: strin
                 {/* 零部件信息 */}
                 <div className="p-6">
                   <h3 className="text-lg font-bold text-[#1C2B25] mb-2">
-                    {component.name}
+                    {t(component.nameKey)}
                   </h3>
-                  <p className="text-sm text-[#37474F] leading-relaxed">{component.material}</p>
+                  <p className="text-sm text-[#37474F] leading-relaxed">{t(component.descKey)}</p>
                 </div>
               </div>
             ))}
@@ -131,10 +134,10 @@ export default function AirConditionerPage({ params }: { params: { locale: strin
       <section className="py-12 md:py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 md:px-6 text-center">
           <h3 className="text-2xl md:text-3xl font-bold text-[#1C2B25] mb-4">
-            Need materials for air conditioner components?
+            {t('ctaTitle')}
           </h3>
           <p className="text-base md:text-lg text-gray-600 mb-8">
-            We provide custom formulations tailored to your exact specifications and testing requirements.
+            {t('ctaText')}
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4">
@@ -142,13 +145,13 @@ export default function AirConditionerPage({ params }: { params: { locale: strin
               href={`/${params.locale}/#contact`}
               className="bg-[#FF8F00] text-white px-8 py-4 font-semibold rounded hover:bg-[#F57C00] transition text-lg"
             >
-              Request a Quote
+              {t('requestQuote')}
             </Link>
             <Link
               href={`/${params.locale}/applications/home-appliances`}
               className="border-2 border-[#1B5E3A] text-[#1B5E3A] px-8 py-4 font-semibold rounded hover:bg-[#1B5E3A] hover:text-white transition text-lg"
             >
-              Back to Home Appliances
+              {t('backToAppliances')}
             </Link>
           </div>
         </div>

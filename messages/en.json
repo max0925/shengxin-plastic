@@ -157,5 +157,43 @@
     "quickLink3": "About Us",
     "quickLink4": "Contact",
     "quickLink5": "Get a Quote"
+  },
+  "homeAppliances": {
+    "title": "Home Appliances",
+    "overview": "We supply flame-retardant, impact-modified, and high-gloss compounds for major appliance manufacturers — from structural housings to aesthetic exterior panels.",
+    "airConditioner": "Air Conditioner",
+    "ledLighting": "LED Lighting",
+    "audioSystems": "Audio Systems",
+    "dishwasher": "Dishwasher",
+    "oven": "Oven",
+    "television": "Television",
+    "inductionCooker": "Induction Cooker",
+    "ctaText": "Need custom materials for your appliances?",
+    "requestQuote": "Request a Quote",
+    "viewMaterials": "View All Materials"
+  },
+  "airConditioner": {
+    "title": "Air Conditioner",
+    "home": "Home",
+    "applications": "Applications",
+    "homeAppliances": "Home Appliances",
+    "description1": "We supply high-performance modified plastics for air conditioner manufacturers, meeting strict requirements for flame retardancy, impact resistance, heat deflection, and dimensional stability.",
+    "description2": "Our compounds are used in critical structural components, airflow systems, and housings — providing reliable performance under continuous operation and temperature cycling.",
+    "description3": "From indoor units to outdoor enclosures, we deliver materials that meet UL, IEC, and industry-specific certifications.",
+    "keyComponents": "Key Components",
+    "a1Name": "Cross Flow Fan Blade",
+    "a1Desc": "AS + Reinforced / High rigidity / Dimensional stability / Heat resistant / Low warpage",
+    "a2Name": "Outdoor Unit Cover",
+    "a2Desc": "PP + Weather resistant / Flame retardant / Anti-aging",
+    "a3Name": "Motor Press Cover",
+    "a3Desc": "PP + Reinforced / High temperature / High rigidity",
+    "a4Name": "Electrical Control Box",
+    "a4Desc": "PA6 + Flame retardant / High temperature / Electrical insulation",
+    "a5Name": "Indoor Air Guide Vane",
+    "a5Desc": "PC + Heat resistant / High rigidity / Impact modified",
+    "ctaTitle": "Need materials for air conditioner components?",
+    "ctaText": "We provide custom formulations tailored to your exact specifications and testing requirements.",
+    "requestQuote": "Request a Quote",
+    "backToAppliances": "Back to Home Appliances"
   }
 }

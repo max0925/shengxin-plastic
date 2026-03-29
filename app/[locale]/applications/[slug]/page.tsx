@@ -1,16 +1,17 @@
 // 应用行业详情页面 - 动态路由
 
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
-// Home Appliances 产品数据
+// Home Appliances 产品数据 - 使用 key 来对应翻译
 const homeApplianceProducts = [
-  { name: 'Air Conditioner', image: '/HomeAppliances/AirConditioner.jpg', link: 'air-conditioner' },
-  { name: 'LED Lighting', image: '/HomeAppliances/LEDLighting.jpg', link: null },
-  { name: 'Audio Systems', image: '/HomeAppliances/AudioSystems.jpg', link: null },
-  { name: 'Dishwasher', image: '/HomeAppliances/Dishwasher.jpg', link: null },
-  { name: 'Oven', image: '/HomeAppliances/Oven.jpg', link: null },
-  { name: 'Television', image: '/HomeAppliances/Television.jpg', link: null },
-  { name: 'Induction Cooker', image: '/HomeAppliances/InductionCooker.jpg', link: null },
+  { key: 'airConditioner', image: '/HomeAppliances/AirConditioner.jpg', link: 'air-conditioner' },
+  { key: 'ledLighting', image: '/HomeAppliances/LEDLighting.jpg', link: null },
+  { key: 'audioSystems', image: '/HomeAppliances/AudioSystems.jpg', link: null },
+  { key: 'dishwasher', image: '/HomeAppliances/Dishwasher.jpg', link: null },
+  { key: 'oven', image: '/HomeAppliances/Oven.jpg', link: null },
+  { key: 'television', image: '/HomeAppliances/Television.jpg', link: null },
+  { key: 'inductionCooker', image: '/HomeAppliances/InductionCooker.jpg', link: null },
 ];
 
 const applicationData: Record<string, { title: string; description: string; image: string; details: string[] }> = {
@@ -78,6 +79,7 @@ const applicationData: Record<string, { title: string; description: string; imag
 
 export default function ApplicationPage({ params }: { params: { slug: string; locale: string } }) {
   const data = applicationData[params.slug];
+  const t = useTranslations('homeAppliances');
 
   if (!data) {
     return (
@@ -98,12 +100,12 @@ export default function ApplicationPage({ params }: { params: { slug: string; lo
       <main>
         {/* Hero 区域 */}
         <section className="relative h-[50vh] min-h-[400px]">
-          <img src={data.image} alt={data.title} className="absolute inset-0 w-full h-full object-cover" />
+          <img src={data.image} alt={t('title')} className="absolute inset-0 w-full h-full object-cover" />
           <div className="absolute inset-0 bg-black/50" />
           <div className="relative z-10 h-full flex items-end pb-12">
             <div className="max-w-7xl mx-auto px-4 md:px-6 w-full">
               <p className="text-white/60 text-sm mb-2 uppercase tracking-wide">APPLICATIONS</p>
-              <h1 className="text-white text-4xl lg:text-5xl font-extrabold font-title">{data.title}</h1>
+              <h1 className="text-white text-4xl lg:text-5xl font-extrabold font-title">{t('title')}</h1>
             </div>
           </div>
         </section>
@@ -113,7 +115,7 @@ export default function ApplicationPage({ params }: { params: { slug: string; lo
           <div className="max-w-7xl mx-auto px-4 md:px-6">
             {/* Overview 文字 */}
             <p className="text-[#37474F] text-base md:text-lg leading-relaxed max-w-3xl mb-10">
-              We supply flame-retardant, impact-modified, and high-gloss compounds for major appliance manufacturers — from structural housings to aesthetic exterior panels.
+              {t('overview')}
             </p>
 
             {/* Bento Grid 布局 */}
@@ -148,19 +150,19 @@ export default function ApplicationPage({ params }: { params: { slug: string; lo
 
             {/* 底部 CTA */}
             <div className="mt-12 md:mt-16 text-center">
-              <p className="text-gray-500 text-base md:text-lg mb-6">Need custom materials for your appliances?</p>
+              <p className="text-gray-500 text-base md:text-lg mb-6">{t('ctaText')}</p>
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <Link
                   href={`/${params.locale}/#contact`}
                   className="bg-[#FF8F00] text-white px-6 md:px-8 py-3 md:py-4 font-semibold rounded hover:bg-[#F57C00] transition text-base md:text-lg"
                 >
-                  Request a Quote
+                  {t('requestQuote')}
                 </Link>
                 <Link
                   href={`/${params.locale}/#materials`}
                   className="border-2 border-[#1B5E3A] text-[#1B5E3A] px-6 md:px-8 py-3 md:py-4 font-semibold rounded hover:bg-[#1B5E3A] hover:text-white transition text-base md:text-lg"
                 >
-                  View All Materials
+                  {t('viewMaterials')}
                 </Link>
               </div>
             </div>
@@ -231,13 +233,14 @@ export default function ApplicationPage({ params }: { params: { slug: string; lo
 }
 
 // 产品卡片组件
-function ProductCard({ product, locale }: { product: { name: string; image: string; link: string | null }; locale: string }) {
+function ProductCard({ product, locale }: { product: { key: string; image: string; link: string | null }; locale: string }) {
+  const t = useTranslations('homeAppliances');
   const cardContent = (
     <>
       {/* 产品图片 - 撑满整个卡片 */}
       <img
         src={product.image}
-        alt={product.name}
+        alt={t(product.key)}
         className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
       />
 
@@ -253,7 +256,7 @@ function ProductCard({ product, locale }: { product: { name: string; image: stri
             fontWeight: 700
           }}
         >
-          {product.name}
+          {t(product.key)}
         </h3>
       </div>
 
