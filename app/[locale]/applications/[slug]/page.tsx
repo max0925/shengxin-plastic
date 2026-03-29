@@ -3,6 +3,8 @@
 import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
 
+export const dynamic = 'force-dynamic';
+
 // Home Appliances 产品数据 - 使用 key 来对应翻译
 const homeApplianceProducts = [
   { key: 'airConditioner', image: '/HomeAppliances/AirConditioner.jpg', link: 'air-conditioner' },
@@ -299,14 +301,4 @@ function ProductCard({ product, locale }: { product: { name: string; image: stri
       {cardContent}
     </div>
   );
-}
-
-export function generateStaticParams() {
-  return [
-    { slug: 'home-appliances' },
-    { slug: 'automotive' },
-    { slug: 'construction' },
-    { slug: 'consumer-electronics' },
-    { slug: 'industrial-parts' },
-  ];
 }

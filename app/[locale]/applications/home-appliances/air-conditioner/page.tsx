@@ -3,6 +3,8 @@
 import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
 
+export const dynamic = 'force-dynamic';
+
 // 零部件数据 - 使用 key 来对应翻译
 const components = [
   {
