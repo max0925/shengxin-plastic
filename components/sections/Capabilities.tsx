@@ -42,87 +42,87 @@ const Capabilities: React.FC = () => {
     <section id="capabilities" className="relative overflow-visible">
       <div className="grid grid-cols-1 lg:grid-cols-5 min-h-[650px]">
         {/* 左侧绿色 2/5 = 40% */}
-        <div className="lg:col-span-2 bg-[#1B5E3A] p-10 lg:p-12">
+        <div className="lg:col-span-2 bg-[#1B5E3A] p-6 md:p-10 lg:p-12">
           <p className="text-white/50 text-xs tracking-[0.15em] uppercase mb-3">
             {t('label')}
           </p>
           <h2
-            className="text-white text-4xl lg:text-5xl font-extrabold uppercase tracking-[0.08em] leading-tight mb-3"
+            className="text-white text-3xl md:text-4xl lg:text-5xl font-extrabold uppercase tracking-[0.08em] leading-tight mb-3"
             style={{ fontFamily: "'Montserrat', sans-serif" }}
           >
             {t('title')}
           </h2>
-          <p className="text-white/50 text-sm mb-10">
+          <p className="text-white/50 text-sm mb-8 md:mb-10">
             {t('subtitle')}
           </p>
 
           {/* 竖列布局，每项一行 */}
-          <div className="space-y-6">
-            <div className="flex items-start gap-4">
-              <div className="w-8 h-8 border border-white/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+          <div className="space-y-5 md:space-y-6">
+            <div className="flex items-start gap-3 md:gap-4">
+              <div className="w-7 h-7 md:w-8 md:h-8 border border-white/30 flex items-center justify-center flex-shrink-0 mt-0.5">
                 <span className="text-white text-xs">01</span>
               </div>
               <div>
-                <h4 className="text-white font-bold text-base mb-0.5">{t('production')}</h4>
-                <p className="text-white/50 text-sm">
+                <h4 className="text-white font-bold text-sm md:text-base mb-0.5">{t('production')}</h4>
+                <p className="text-white/50 text-xs md:text-sm">
                   {t('productionDesc')}
                 </p>
               </div>
             </div>
 
-            <div className="flex items-start gap-4">
-              <div className="w-8 h-8 border border-white/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+            <div className="flex items-start gap-3 md:gap-4">
+              <div className="w-7 h-7 md:w-8 md:h-8 border border-white/30 flex items-center justify-center flex-shrink-0 mt-0.5">
                 <span className="text-white text-xs">02</span>
               </div>
               <div>
-                <h4 className="text-white font-bold text-base mb-0.5">{t('qcLab')}</h4>
-                <p className="text-white/50 text-sm">
+                <h4 className="text-white font-bold text-sm md:text-base mb-0.5">{t('qcLab')}</h4>
+                <p className="text-white/50 text-xs md:text-sm">
                   {t('qcLabDesc')}
                 </p>
               </div>
             </div>
 
-            <div className="flex items-start gap-4">
-              <div className="w-8 h-8 border border-white/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+            <div className="flex items-start gap-3 md:gap-4">
+              <div className="w-7 h-7 md:w-8 md:h-8 border border-white/30 flex items-center justify-center flex-shrink-0 mt-0.5">
                 <span className="text-white text-xs">03</span>
               </div>
               <div>
-                <h4 className="text-white font-bold text-base mb-0.5">{t('leadTime')}</h4>
-                <p className="text-white/50 text-sm">
+                <h4 className="text-white font-bold text-sm md:text-base mb-0.5">{t('leadTime')}</h4>
+                <p className="text-white/50 text-xs md:text-sm">
                   {t('leadTimeDesc')}
                 </p>
               </div>
             </div>
 
-            <div className="flex items-start gap-4">
-              <div className="w-8 h-8 border border-white/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+            <div className="flex items-start gap-3 md:gap-4">
+              <div className="w-7 h-7 md:w-8 md:h-8 border border-white/30 flex items-center justify-center flex-shrink-0 mt-0.5">
                 <span className="text-white text-xs">04</span>
               </div>
               <div>
-                <h4 className="text-white font-bold text-base mb-0.5">{t('export')}</h4>
-                <p className="text-white/50 text-sm">
+                <h4 className="text-white font-bold text-sm md:text-base mb-0.5">{t('export')}</h4>
+                <p className="text-white/50 text-xs md:text-sm">
                   {t('exportDesc')}
                 </p>
               </div>
             </div>
 
-            <div className="flex items-start gap-4">
-              <div className="w-8 h-8 border border-white/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+            <div className="flex items-start gap-3 md:gap-4">
+              <div className="w-7 h-7 md:w-8 md:h-8 border border-white/30 flex items-center justify-center flex-shrink-0 mt-0.5">
                 <span className="text-white text-xs">05</span>
               </div>
               <div>
-                <h4 className="text-white font-bold text-base mb-0.5">{t('certs')}</h4>
-                <p className="text-white/50 text-sm">{t('certsDesc')}</p>
+                <h4 className="text-white font-bold text-sm md:text-base mb-0.5">{t('certs')}</h4>
+                <p className="text-white/50 text-xs md:text-sm">{t('certsDesc')}</p>
               </div>
             </div>
 
-            <div className="flex items-start gap-4">
-              <div className="w-8 h-8 border border-white/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+            <div className="flex items-start gap-3 md:gap-4">
+              <div className="w-7 h-7 md:w-8 md:h-8 border border-white/30 flex items-center justify-center flex-shrink-0 mt-0.5">
                 <span className="text-white text-xs">06</span>
               </div>
               <div>
-                <h4 className="text-white font-bold text-base mb-0.5">{t('support')}</h4>
-                <p className="text-white/50 text-sm">
+                <h4 className="text-white font-bold text-sm md:text-base mb-0.5">{t('support')}</h4>
+                <p className="text-white/50 text-xs md:text-sm">
                   {t('supportDesc')}
                 </p>
               </div>
@@ -148,24 +148,24 @@ const Capabilities: React.FC = () => {
 
           {/* 数字动画条 - 白色背景，大号彩色数字 */}
           <div className="flex flex-col sm:flex-row bg-white border-t md:border-t-0 border-gray-100">
-            <div className="px-6 py-6 sm:px-8 flex-1 border-b sm:border-b-0 sm:border-r border-gray-100">
+            <div className="px-6 py-5 sm:px-8 sm:py-6 flex-1 border-b sm:border-b-0 sm:border-r border-gray-100">
               <span
-                className="text-[#1B5E3A] text-5xl lg:text-6xl font-extrabold"
+                className="text-[#1B5E3A] text-4xl md:text-5xl lg:text-6xl font-extrabold"
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
               >
                 <AnimatedNumber target={1989} duration={3000} />
               </span>
-              <p className="text-gray-500 text-sm mt-1 tracking-wide">{t('established')}</p>
+              <p className="text-gray-500 text-xs md:text-sm mt-1 tracking-wide">{t('established')}</p>
             </div>
-            <div className="px-6 py-6 sm:px-8 flex-1">
+            <div className="px-6 py-5 sm:px-8 sm:py-6 flex-1">
               <span
-                className="text-[#FF8F00] text-5xl lg:text-6xl font-extrabold"
+                className="text-[#FF8F00] text-4xl md:text-5xl lg:text-6xl font-extrabold"
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
               >
                 <AnimatedNumber target={20000} duration={3000} />
-                <span className="text-4xl">⁺</span>
+                <span className="text-3xl md:text-4xl">⁺</span>
               </span>
-              <p className="text-gray-500 text-sm mt-1 tracking-wide">{t('annualOutput')}</p>
+              <p className="text-gray-500 text-xs md:text-sm mt-1 tracking-wide">{t('annualOutput')}</p>
             </div>
           </div>
         </div>

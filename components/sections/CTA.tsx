@@ -12,41 +12,41 @@ const CTA: React.FC = () => {
       <div className="container-custom">
         <div className="max-w-4xl mx-auto text-center pb-8">
           {/* Label */}
-          <div className="text-[#FF8F00] text-sm font-bold tracking-widest-custom mb-3 uppercase">
+          <div className="text-[#FF8F00] text-xs md:text-sm font-bold tracking-widest-custom mb-3 uppercase">
             {t('label')}
           </div>
 
           {/* Main Heading */}
-          <h2 className="text-5xl font-bold text-[#1C2B25] mb-4 font-title">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1C2B25] mb-4 font-title px-4">
             {t('title')}
           </h2>
 
           {/* Description */}
-          <p className="text-lg text-gray-500 mb-8 max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-gray-500 mb-8 max-w-2xl mx-auto px-4">
             {t('subtitle')}
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-            <Button variant="accent" size="large">
+          <div className="flex flex-col md:flex-row items-stretch md:items-center justify-center gap-3 mb-8 px-4">
+            <Button variant="accent" size="large" className="w-full md:w-auto">
               {t('requestQuote')}
             </Button>
             <a
               href="#"
-              className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium rounded-md border-2 border-[#1B5E3A] text-[#1B5E3A] hover:bg-[#1B5E3A] hover:text-white transition-all duration-300"
+              className="inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 text-base md:text-lg font-medium rounded-md border-2 border-[#1B5E3A] text-[#1B5E3A] hover:bg-[#1B5E3A] hover:text-white transition-all duration-300 w-full md:w-auto"
             >
               {t('sendSpec')}
             </a>
             <a
               href="#"
-              className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium rounded-md border-2 border-[#1B5E3A] text-[#1B5E3A] hover:bg-[#1B5E3A] hover:text-white transition-all duration-300"
+              className="inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 text-base md:text-lg font-medium rounded-md border-2 border-[#1B5E3A] text-[#1B5E3A] hover:bg-[#1B5E3A] hover:text-white transition-all duration-300 w-full md:w-auto"
             >
               {t('bookCall')}
             </a>
           </div>
 
           {/* Contact Info */}
-          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-1 text-sm text-gray-500 pt-6 border-t border-gray-300">
+          <div className="flex flex-col md:flex-row md:flex-wrap items-center justify-center gap-x-6 gap-y-3 md:gap-y-1 text-xs md:text-sm text-gray-500 pt-6 border-t border-gray-300 px-4">
             <span className="flex items-center gap-1.5">
               <svg
                 className="w-4 h-4"
@@ -62,8 +62,8 @@ const CTA: React.FC = () => {
               </svg>
               tengk958@hotmail.com
             </span>
-            <span className="text-gray-300">·</span>
-            <div className="flex flex-col text-sm">
+            <span className="hidden md:inline text-gray-300">·</span>
+            <div className="flex flex-col text-xs md:text-sm text-center md:text-left">
               <span className="flex items-center gap-1.5">
                 <svg
                   className="w-4 h-4"
@@ -93,8 +93,8 @@ const CTA: React.FC = () => {
                 +1 215 433 3611
               </span>
             </div>
-            <span className="text-gray-300">·</span>
-            <div className="flex flex-col text-sm">
+            <span className="hidden md:inline text-gray-300">·</span>
+            <div className="flex flex-col text-xs md:text-sm text-center md:text-left">
               <span>WhatsApp</span>
               <span>WeChat</span>
             </div>
