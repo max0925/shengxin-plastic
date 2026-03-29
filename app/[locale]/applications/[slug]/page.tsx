@@ -244,27 +244,35 @@ function ProductCard({ product }: { product: { name: string; image: string } }) 
       {/* 半透明遮罩 - hover时显示 */}
       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
 
-      {/* 产品名称 - 左上角，叠在图片上 */}
+      {/* 产品名称 - 左上角，直接叠在图片上 */}
       <div className="absolute top-4 left-4 z-10">
-        <h3 className="text-[#1B5E3A] font-bold text-lg md:text-xl bg-white/90 px-3 py-1.5 rounded">{product.name}</h3>
+        <h3
+          className="text-white font-bold text-sm uppercase tracking-wider"
+          style={{
+            fontFamily: "'Montserrat', sans-serif",
+            fontWeight: 700,
+            textShadow: '0 1px 3px rgba(0,0,0,0.3)'
+          }}
+        >
+          {product.name}
+        </h3>
       </div>
 
-      {/* 箭头 - 右下角，叠在图片上 */}
+      {/* 箭头 - 右下角，直接叠在图片上 */}
       <div className="absolute bottom-4 right-4 z-10">
-        <div className="bg-white/90 p-2 rounded-full">
-          <svg
-            className="w-5 h-5 md:w-6 md:h-6 text-[#1B5E3A] group-hover:translate-x-1 group-hover:translate-y-1 transition-transform duration-300"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <line x1="5" y1="12" x2="19" y2="12" />
-            <polyline points="12 5 19 12 12 19" />
-          </svg>
-        </div>
+        <svg
+          className="w-8 h-8 text-white group-hover:translate-x-1 group-hover:translate-y-1 transition-transform duration-300"
+          style={{ filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.4))' }}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <line x1="5" y1="12" x2="19" y2="12" />
+          <polyline points="12 5 19 12 12 19" />
+        </svg>
       </div>
     </div>
   );
