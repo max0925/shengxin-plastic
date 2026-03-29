@@ -1,7 +1,7 @@
 // 应用行业详情页面 - 动态路由
 
 import Link from 'next/link';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 
 // Home Appliances 产品数据 - 使用 key 来对应翻译
 const homeApplianceProducts = [
@@ -77,9 +77,9 @@ const applicationData: Record<string, { title: string; description: string; imag
   },
 };
 
-export default function ApplicationPage({ params }: { params: { slug: string; locale: string } }) {
+export default async function ApplicationPage({ params }: { params: { slug: string; locale: string } }) {
   const data = applicationData[params.slug];
-  const t = useTranslations('homeAppliances');
+  const t = await getTranslations('homeAppliances');
 
   if (!data) {
     return (
@@ -96,6 +96,13 @@ export default function ApplicationPage({ params }: { params: { slug: string; lo
 
   // Home Appliances 专用布局
   if (params.slug === 'home-appliances') {
+    // 将产品数据转换为包含翻译名称的格式
+    const translatedProducts = homeApplianceProducts.map(product => ({
+      name: t(product.key),
+      image: product.image,
+      link: product.link
+    }));
+
     return (
       <main>
         {/* Hero 区域 */}
@@ -122,29 +129,29 @@ export default function ApplicationPage({ params }: { params: { slug: string; lo
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 md:gap-2">
               {/* 第一行：2个卡片 (各占50%) - Air Conditioner, LED Lighting */}
               <div className="md:col-span-1 lg:col-span-1">
-                <ProductCard product={homeApplianceProducts[0]} locale={params.locale} />
+                <ProductCard product={translatedProducts[0]} locale={params.locale} />
               </div>
               <div className="md:col-span-1 lg:col-span-2">
-                <ProductCard product={homeApplianceProducts[1]} locale={params.locale} />
+                <ProductCard product={translatedProducts[1]} locale={params.locale} />
               </div>
 
               {/* 第二行：2个卡片 (各占50%) - Audio Systems, Dishwasher */}
               <div className="md:col-span-1 lg:col-span-2">
-                <ProductCard product={homeApplianceProducts[2]} locale={params.locale} />
+                <ProductCard product={translatedProducts[2]} locale={params.locale} />
               </div>
               <div className="md:col-span-1 lg:col-span-1">
-                <ProductCard product={homeApplianceProducts[3]} locale={params.locale} />
+                <ProductCard product={translatedProducts[3]} locale={params.locale} />
               </div>
 
               {/* 第三行：3个卡片 (各占33%) - Oven, Television, Induction Cooker */}
               <div className="md:col-span-1 lg:col-span-1">
-                <ProductCard product={homeApplianceProducts[4]} locale={params.locale} />
+                <ProductCard product={translatedProducts[4]} locale={params.locale} />
               </div>
               <div className="md:col-span-1 lg:col-span-1">
-                <ProductCard product={homeApplianceProducts[5]} locale={params.locale} />
+                <ProductCard product={translatedProducts[5]} locale={params.locale} />
               </div>
               <div className="md:col-span-2 lg:col-span-1">
-                <ProductCard product={homeApplianceProducts[6]} locale={params.locale} />
+                <ProductCard product={translatedProducts[6]} locale={params.locale} />
               </div>
             </div>
 
@@ -233,14 +240,13 @@ export default function ApplicationPage({ params }: { params: { slug: string; lo
 }
 
 // 产品卡片组件
-function ProductCard({ product, locale }: { product: { key: string; image: string; link: string | null }; locale: string }) {
-  const t = useTranslations('homeAppliances');
+function ProductCard({ product, locale }: { product: { name: string; image: string; link: string | null }; locale: string }) {
   const cardContent = (
     <>
       {/* 产品图片 - 撑满整个卡片 */}
       <img
         src={product.image}
-        alt={t(product.key)}
+        alt={product.name}
         className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
       />
 
@@ -256,7 +262,7 @@ function ProductCard({ product, locale }: { product: { key: string; image: strin
             fontWeight: 700
           }}
         >
-          {t(product.key)}
+          {product.name}
         </h3>
       </div>
 

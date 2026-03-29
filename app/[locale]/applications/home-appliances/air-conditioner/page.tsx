@@ -1,7 +1,7 @@
 // Air Conditioner 详情页面
 
 import Link from 'next/link';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 
 // 零部件数据 - 使用 key 来对应翻译
 const components = [
@@ -32,8 +32,8 @@ const components = [
   },
 ];
 
-export default function AirConditionerPage({ params }: { params: { locale: string } }) {
-  const t = useTranslations('airConditioner');
+export default async function AirConditionerPage({ params }: { params: { locale: string } }) {
+  const t = await getTranslations('airConditioner');
 
   return (
     <main className="bg-white">
