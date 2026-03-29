@@ -4,13 +4,13 @@ import Link from 'next/link';
 
 // Home Appliances 产品数据
 const homeApplianceProducts = [
-  { name: 'Air Conditioner', image: '/products/air-conditioner.jpg' },
-  { name: 'LED Lighting', image: '/products/led-lighting.jpg' },
-  { name: 'Audio Systems', image: '/products/audio-systems.jpg' },
-  { name: 'Dishwasher', image: '/products/dishwasher.jpg' },
-  { name: 'Oven', image: '/products/oven.jpg' },
-  { name: 'Television', image: '/products/television.jpg' },
-  { name: 'Induction Cooker', image: '/products/induction-cooker.jpg' },
+  { name: 'Air Conditioner', image: '/HomeAppliances/AirConditioner.jpg' },
+  { name: 'LED Lighting', image: '/HomeAppliances/LEDLighting.jpg' },
+  { name: 'Audio Systems', image: '/HomeAppliances/AudioSystems.jpg' },
+  { name: 'Dishwasher', image: '/HomeAppliances/Dishwasher.jpg' },
+  { name: 'Oven', image: '/HomeAppliances/Oven.jpg' },
+  { name: 'Television', image: '/HomeAppliances/Television.jpg' },
+  { name: 'Induction Cooker', image: '/HomeAppliances/InductionCooker.jpg' },
 ];
 
 const applicationData: Record<string, { title: string; description: string; image: string; details: string[] }> = {
@@ -239,11 +239,13 @@ function ProductCard({ product }: { product: { name: string; image: string } }) 
         <h3 className="text-[#1B5E3A] font-bold text-lg md:text-xl">{product.name}</h3>
       </div>
 
-      {/* 图片占位区 - 中间 */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="w-full h-full bg-gray-300 flex items-center justify-center">
-          <span className="text-gray-500 text-sm md:text-base font-medium px-4 text-center">{product.name}</span>
-        </div>
+      {/* 产品图片 - 中间 */}
+      <div className="absolute inset-0 flex items-center justify-center p-4 md:p-6">
+        <img
+          src={product.image}
+          alt={product.name}
+          className="w-full h-full object-contain"
+        />
       </div>
 
       {/* 箭头 - 右下角 */}
