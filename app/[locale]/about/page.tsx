@@ -12,7 +12,7 @@ export default async function AboutPage({ params }: { params: { locale: string }
   return (
     <main className="bg-white">
       {/* Hero 区域 - factory.jpg 背景 + 遮罩 */}
-      <section className="relative py-16 md:py-20">
+      <section className="relative h-[45vh] min-h-[350px]">
         {/* 背景图片 */}
         <img
           src="/factory.jpg"
@@ -23,7 +23,7 @@ export default async function AboutPage({ params }: { params: { locale: string }
         <div className="absolute inset-0 bg-black/50" />
 
         {/* 内容 */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 text-center">
+        <div className="relative z-10 h-full flex flex-col items-center justify-center max-w-7xl mx-auto px-4 md:px-6 text-center">
           <h1
             className="text-white text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 uppercase tracking-wide"
             style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 800 }}
@@ -35,7 +35,7 @@ export default async function AboutPage({ params }: { params: { locale: string }
             <span className="text-white/70">›</span>
             <Link
               href={`/${params.locale}`}
-              className="border-2 border-white text-white px-6 py-2 font-bold text-sm rounded hover:bg-white hover:text-[#1B5E3A] transition"
+              className="text-white/70 hover:text-white underline text-sm transition"
             >
               {t('breadcrumbBack')}
             </Link>
@@ -78,7 +78,7 @@ export default async function AboutPage({ params }: { params: { locale: string }
               {/* Contact Us 按钮 */}
               <Link
                 href={`/${params.locale}/#contact`}
-                className="inline-block bg-[#FF8F00] text-white px-8 py-3 font-semibold rounded hover:bg-[#F57C00] transition"
+                className="inline-block bg-[#1B5E3A] text-white px-8 py-3 font-semibold rounded hover:bg-[#00695C] transition"
               >
                 {t('contactUs')}
               </Link>
