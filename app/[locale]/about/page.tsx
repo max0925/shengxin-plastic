@@ -94,13 +94,19 @@ export default async function AboutPage({ params }: { params: { locale: string }
             </Link>
           </div>
 
-          {/* 右侧：工厂图片 - 撑满整个右半部分 */}
-          <div className="relative h-full min-h-[400px] lg:min-h-0">
-            <img
-              src="/unnamed-3.jpg"
-              alt="Factory"
-              className="absolute inset-0 w-full h-full object-cover"
-            />
+          {/* 右侧：工厂图片区域 - 带装饰色块 */}
+          <div className="relative py-12 md:py-16 lg:py-20 px-6 md:px-12 lg:px-16 flex items-center justify-center">
+            {/* 绿色装饰色块 - 左上角 */}
+            <div className="absolute top-8 left-8 w-32 h-32 md:w-40 md:h-40 bg-[#006B3F] opacity-90 z-0"></div>
+
+            {/* 工厂图片 */}
+            <div className="relative z-10 w-full aspect-[4/3] overflow-hidden rounded-lg shadow-lg">
+              <img
+                src="/unnamed-3.jpg"
+                alt="Factory"
+                className="w-full h-full object-cover"
+              />
+            </div>
           </div>
         </div>
       </section>
