@@ -380,8 +380,19 @@ export async function POST(request: NextRequest) {
       ? `感谢您的咨询 - 盛欣塑化`
       : `Thank You for Your Inquiry - Shengxin Plastic`;
 
-    // Use onboarding@resend.dev for testing (change to verified domain later)
-    const fromEmail = process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev';
+    // Use Resend's onboarding email (required for free tier without verified domain)
+    const fromEmail = 'Shengxin Plastic <onboarding@resend.dev>';
+
+    console.log('Attempting to send email with config:', {
+      from: fromEmail,
+      to: 'tengk958@hotmail.com',
+      subject: companyEmailSubject,
+      bodyPreview: {
+        name: body.name,
+        email: body.email,
+        subject: body.subject
+      }
+    });
 
     // Send email to company
     const companyEmailResult = await resend.emails.send({
@@ -391,14 +402,20 @@ export async function POST(request: NextRequest) {
       html: generateCompanyEmailHTML(body),
     });
 
+    console.log('Company email send result:', companyEmailResult);
+
     if (companyEmailResult.error) {
       console.error('Failed to send company email:', companyEmailResult.error);
+      console.error('Full error details:', JSON.stringify(companyEmailResult.error, null, 2));
       return NextResponse.json(
         { success: false, error: 'Failed to send inquiry email' },
         { status: 500 }
       );
     }
 
+    // TODO: Customer confirmation email temporarily disabled for testing
+    // Will re-enable after confirming company email works
+    /*
     // Send confirmation email to customer
     const customerEmailResult = await resend.emails.send({
       from: fromEmail,
@@ -409,9 +426,11 @@ export async function POST(request: NextRequest) {
 
     if (customerEmailResult.error) {
       console.error('Failed to send customer email:', customerEmailResult.error);
+      console.error('Full error details:', JSON.stringify(customerEmailResult.error, null, 2));
       // Don't fail the request if only customer email fails
       // Company already got the inquiry which is the main goal
     }
+    */
 
     // Return success response
     return NextResponse.json({
@@ -421,6 +440,15 @@ export async function POST(request: NextRequest) {
 
   } catch (error) {
     console.error('Error processing contact form:', error);
+    console.error('Full error:', JSON.stringify(error, null, 2));
+
+    // Log additional error details
+    if (error instanceof Error) {
+      console.error('Error name:', error.name);
+      console.error('Error message:', error.message);
+      console.error('Error stack:', error.stack);
+    }
+
     return NextResponse.json(
       {
         success: false,
