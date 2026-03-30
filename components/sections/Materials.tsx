@@ -23,8 +23,9 @@ export default function Materials() {
   // 箭头按钮滚动 - 使用简单的 scrollBy
   const scroll = (dir: 'left' | 'right') => {
     if (scrollRef.current) {
+      // 卡片宽度 220px + gap 20px = 240px
       scrollRef.current.scrollBy({
-        left: dir === 'left' ? -230 : 230,
+        left: dir === 'left' ? -240 : 240,
         behavior: 'smooth',
       });
     }
@@ -68,30 +69,44 @@ export default function Materials() {
           {/* 滑页内容 - 原生水平滚动 */}
           <div
             ref={scrollRef}
-            className="flex gap-6 overflow-x-auto scrollbar-hide flex-1"
+            className="flex overflow-x-auto scrollbar-hide flex-1"
             style={{
               WebkitOverflowScrolling: 'touch',
+              gap: '20px',
             }}
           >
             {materials.map((m, index) => (
               <div
                 key={`${m.name}-${index}`}
-                className="flex-shrink-0 min-w-[210px]"
+                style={{
+                  width: '220px',
+                  minWidth: '220px',
+                  flexShrink: 0,
+                }}
               >
                 {/* 图片区域 */}
-                <div className="w-[210px] h-[210px] overflow-hidden bg-gray-700">
+                <div className="overflow-hidden bg-gray-700" style={{ width: '100%', aspectRatio: '1/1' }}>
                   <img
                     src={m.image}
                     alt={m.name}
-                    className="w-full h-full object-cover"
+                    className="object-cover"
+                    style={{ width: '100%', height: '100%' }}
                     draggable="false"
                   />
                 </div>
                 <div className="pt-4">
-                  <h4 className="font-bold text-base text-[#1C2B25] uppercase tracking-wide">
+                  <h4
+                    className="font-bold text-base text-[#1C2B25] uppercase tracking-wide"
+                    style={{ wordWrap: 'break-word' }}
+                  >
                     {m.name}
                   </h4>
-                  <p className="text-sm text-[#37474F] mt-2 leading-relaxed">{t(`items.${m.descKey}.desc`)}</p>
+                  <p
+                    className="text-sm text-[#37474F] mt-2 leading-relaxed"
+                    style={{ wordWrap: 'break-word' }}
+                  >
+                    {t(`items.${m.descKey}.desc`)}
+                  </p>
                 </div>
               </div>
             ))}
