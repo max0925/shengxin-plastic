@@ -24,7 +24,7 @@ export default function Materials() {
   const scroll = (dir: 'left' | 'right') => {
     if (scrollRef.current) {
       scrollRef.current.scrollBy({
-        left: dir === 'left' ? -280 : 280,
+        left: dir === 'left' ? -230 : 230,
         behavior: 'smooth',
       });
     }
@@ -76,10 +76,10 @@ export default function Materials() {
             {materials.map((m, index) => (
               <div
                 key={`${m.name}-${index}`}
-                className="flex-shrink-0 min-w-[250px]"
+                className="flex-shrink-0 min-w-[210px]"
               >
                 {/* 图片区域 */}
-                <div className="w-[250px] h-[250px] overflow-hidden bg-gray-700 rounded-lg">
+                <div className="w-[210px] h-[210px] overflow-hidden bg-gray-700">
                   <img
                     src={m.image}
                     alt={m.name}
