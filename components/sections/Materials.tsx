@@ -22,6 +22,7 @@ export default function Materials() {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // 复制卡片以实现无限滚动
   const duplicatedMaterials = [...materials, ...materials, ...materials];
@@ -34,32 +35,54 @@ export default function Materials() {
     }
   }, []);
 
-  // 监听手动滚动，实现无限循环
+  // 监听手动滚动，实现无限循环（仅在用户停止滚动后执行）
   useEffect(() => {
     const scrollContainer = scrollRef.current;
     if (!scrollContainer) return;
 
     const handleScroll = () => {
-      const cardWidth = 160 + 12;
-      const singleSetWidth = materials.length * cardWidth;
+      // 如果用户正在拖拽，不执行边界重置
+      if (isDragging) return;
 
-      // 当手动滚动到边界时，无缝重置位置
-      if (scrollContainer.scrollLeft >= singleSetWidth * 2 - 10) {
-        scrollContainer.scrollLeft = singleSetWidth;
-      } else if (scrollContainer.scrollLeft <= 10) {
-        scrollContainer.scrollLeft = singleSetWidth;
+      // 清除之前的定时器
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
       }
+
+      // 延迟执行边界检查，只在用户停止滚动后执行
+      scrollTimeoutRef.current = setTimeout(() => {
+        const cardWidth = 160 + 12;
+        const singleSetWidth = materials.length * cardWidth;
+
+        // 当滚动到边界时，无缝重置位置
+        if (scrollContainer.scrollLeft >= singleSetWidth * 2 - 50) {
+          scrollContainer.scrollLeft = singleSetWidth;
+        } else if (scrollContainer.scrollLeft <= 50) {
+          scrollContainer.scrollLeft = singleSetWidth;
+        }
+      }, 150); // 150ms 延迟，确保用户已停止滚动
     };
 
     scrollContainer.addEventListener('scroll', handleScroll);
-    return () => scrollContainer.removeEventListener('scroll', handleScroll);
-  }, []);
+    return () => {
+      scrollContainer.removeEventListener('scroll', handleScroll);
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+    };
+  }, [isDragging]);
 
   // 箭头按钮滚动
   const scroll = (dir: 'left' | 'right') => {
     if (scrollRef.current) {
+      // 根据屏幕大小计算卡片宽度
+      const isMobile = window.innerWidth < 768;
+      const cardWidth = isMobile ? 160 : 200; // 卡片宽度
+      const gap = isMobile ? 12 : 16; // gap 间距
+      const scrollDistance = cardWidth + gap;
+
       scrollRef.current.scrollBy({
-        left: dir === 'left' ? -300 : 300,
+        left: dir === 'left' ? -scrollDistance : scrollDistance,
         behavior: 'smooth',
       });
     }
@@ -70,13 +93,17 @@ export default function Materials() {
     setIsDragging(true);
     setStartX(e.pageX - (scrollRef.current?.offsetLeft || 0));
     setScrollLeft(scrollRef.current?.scrollLeft || 0);
+    // 清除滚动定时器，防止在拖拽时触发边界重置
+    if (scrollTimeoutRef.current) {
+      clearTimeout(scrollTimeoutRef.current);
+    }
   };
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!isDragging) return;
     e.preventDefault();
     const x = e.pageX - (scrollRef.current?.offsetLeft || 0);
-    const walk = (x - startX) * 2; // 滚动速度倍数
+    const walk = (x - startX) * 1.5; // 降低滚动速度倍数，提升控制感
     if (scrollRef.current) {
       scrollRef.current.scrollLeft = scrollLeft - walk;
     }
@@ -91,12 +118,16 @@ export default function Materials() {
     setIsDragging(true);
     setStartX(e.touches[0].pageX - (scrollRef.current?.offsetLeft || 0));
     setScrollLeft(scrollRef.current?.scrollLeft || 0);
+    // 清除滚动定时器，防止在触摸时触发边界重置
+    if (scrollTimeoutRef.current) {
+      clearTimeout(scrollTimeoutRef.current);
+    }
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
     if (!isDragging) return;
     const x = e.touches[0].pageX - (scrollRef.current?.offsetLeft || 0);
-    const walk = (x - startX) * 2;
+    const walk = (x - startX) * 1.5; // 降低滚动速度倍数，提升控制感
     if (scrollRef.current) {
       scrollRef.current.scrollLeft = scrollLeft - walk;
     }
