@@ -2,7 +2,7 @@
 
 'use client';
 
-import { useRef, useEffect, useState } from 'react';
+import { useRef } from 'react';
 import { useTranslations } from 'next-intl';
 
 const materials = [
@@ -19,122 +19,15 @@ const materials = [
 export default function Materials() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const t = useTranslations('materials');
-  const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
-  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  // 复制卡片以实现无限滚动
-  const duplicatedMaterials = [...materials, ...materials, ...materials];
-
-  // 初始化滚动位置到中间组
-  useEffect(() => {
-    if (scrollRef.current) {
-      const cardWidth = 160 + 12; // 卡片宽度 + gap
-      scrollRef.current.scrollLeft = materials.length * cardWidth;
-    }
-  }, []);
-
-  // 监听手动滚动，实现无限循环（仅在用户停止滚动后执行）
-  useEffect(() => {
-    const scrollContainer = scrollRef.current;
-    if (!scrollContainer) return;
-
-    const handleScroll = () => {
-      // 如果用户正在拖拽，不执行边界重置
-      if (isDragging) return;
-
-      // 清除之前的定时器
-      if (scrollTimeoutRef.current) {
-        clearTimeout(scrollTimeoutRef.current);
-      }
-
-      // 延迟执行边界检查，只在用户停止滚动后执行
-      scrollTimeoutRef.current = setTimeout(() => {
-        const cardWidth = 160 + 12;
-        const singleSetWidth = materials.length * cardWidth;
-
-        // 当滚动到边界时，无缝重置位置
-        if (scrollContainer.scrollLeft >= singleSetWidth * 2 - 50) {
-          scrollContainer.scrollLeft = singleSetWidth;
-        } else if (scrollContainer.scrollLeft <= 50) {
-          scrollContainer.scrollLeft = singleSetWidth;
-        }
-      }, 150); // 150ms 延迟，确保用户已停止滚动
-    };
-
-    scrollContainer.addEventListener('scroll', handleScroll);
-    return () => {
-      scrollContainer.removeEventListener('scroll', handleScroll);
-      if (scrollTimeoutRef.current) {
-        clearTimeout(scrollTimeoutRef.current);
-      }
-    };
-  }, [isDragging]);
-
-  // 箭头按钮滚动
+  // 箭头按钮滚动 - 使用简单的 scrollBy
   const scroll = (dir: 'left' | 'right') => {
     if (scrollRef.current) {
-      // 根据屏幕大小计算卡片宽度
-      const isMobile = window.innerWidth < 768;
-      const cardWidth = isMobile ? 160 : 200; // 卡片宽度
-      const gap = isMobile ? 12 : 16; // gap 间距
-      const scrollDistance = cardWidth + gap;
-
       scrollRef.current.scrollBy({
-        left: dir === 'left' ? -scrollDistance : scrollDistance,
+        left: dir === 'left' ? -280 : 280,
         behavior: 'smooth',
       });
     }
-  };
-
-  // 鼠标拖拽支持
-  const handleMouseDown = (e: React.MouseEvent) => {
-    setIsDragging(true);
-    setStartX(e.pageX - (scrollRef.current?.offsetLeft || 0));
-    setScrollLeft(scrollRef.current?.scrollLeft || 0);
-    // 清除滚动定时器，防止在拖拽时触发边界重置
-    if (scrollTimeoutRef.current) {
-      clearTimeout(scrollTimeoutRef.current);
-    }
-  };
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging) return;
-    e.preventDefault();
-    const x = e.pageX - (scrollRef.current?.offsetLeft || 0);
-    const walk = (x - startX) * 1.5; // 降低滚动速度倍数，提升控制感
-    if (scrollRef.current) {
-      scrollRef.current.scrollLeft = scrollLeft - walk;
-    }
-  };
-
-  const handleMouseUpOrLeave = () => {
-    setIsDragging(false);
-  };
-
-  // 触摸滑动支持（移动端）
-  const handleTouchStart = (e: React.TouchEvent) => {
-    setIsDragging(true);
-    setStartX(e.touches[0].pageX - (scrollRef.current?.offsetLeft || 0));
-    setScrollLeft(scrollRef.current?.scrollLeft || 0);
-    // 清除滚动定时器，防止在触摸时触发边界重置
-    if (scrollTimeoutRef.current) {
-      clearTimeout(scrollTimeoutRef.current);
-    }
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (!isDragging) return;
-    const x = e.touches[0].pageX - (scrollRef.current?.offsetLeft || 0);
-    const walk = (x - startX) * 1.5; // 降低滚动速度倍数，提升控制感
-    if (scrollRef.current) {
-      scrollRef.current.scrollLeft = scrollLeft - walk;
-    }
-  };
-
-  const handleTouchEnd = () => {
-    setIsDragging(false);
   };
 
   return (
@@ -172,40 +65,33 @@ export default function Materials() {
             </svg>
           </button>
 
-          {/* 滑页内容 - 手动滚动轮播 */}
+          {/* 滑页内容 - 原生水平滚动 */}
           <div
             ref={scrollRef}
-            className="flex gap-3 md:gap-4 overflow-x-auto scrollbar-hide flex-1 cursor-grab active:cursor-grabbing"
-            onMouseLeave={handleMouseUpOrLeave}
-            onMouseDown={handleMouseDown}
-            onMouseMove={handleMouseMove}
-            onMouseUp={handleMouseUpOrLeave}
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}
+            className="flex gap-6 overflow-x-auto scrollbar-hide flex-1"
             style={{
-              scrollBehavior: isDragging ? 'auto' : 'smooth',
+              WebkitOverflowScrolling: 'touch',
             }}
           >
-            {duplicatedMaterials.map((m, index) => (
+            {materials.map((m, index) => (
               <div
                 key={`${m.name}-${index}`}
-                className="flex-shrink-0 w-[160px] md:w-[200px]"
+                className="flex-shrink-0 min-w-[250px]"
               >
-                {/* 图片区域 - 所有卡片完全一样的尺寸 */}
-                <div className="w-[160px] h-[160px] md:w-[200px] md:h-[200px] overflow-hidden bg-gray-700">
+                {/* 图片区域 */}
+                <div className="w-[250px] h-[250px] overflow-hidden bg-gray-700 rounded-lg">
                   <img
                     src={m.image}
                     alt={m.name}
-                    className="w-full h-full object-cover pointer-events-none"
+                    className="w-full h-full object-cover"
                     draggable="false"
                   />
                 </div>
-                <div className="pt-3">
-                  <h4 className="font-bold text-sm text-[#1C2B25] uppercase tracking-wide">
+                <div className="pt-4">
+                  <h4 className="font-bold text-base text-[#1C2B25] uppercase tracking-wide">
                     {m.name}
                   </h4>
-                  <p className="text-xs text-[#37474F] mt-1 leading-relaxed">{t(`items.${m.descKey}.desc`)}</p>
+                  <p className="text-sm text-[#37474F] mt-2 leading-relaxed">{t(`items.${m.descKey}.desc`)}</p>
                 </div>
               </div>
             ))}
