@@ -2,7 +2,7 @@
 
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 
 const materials = [
@@ -19,6 +19,83 @@ const materials = [
 export default function Materials() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const t = useTranslations('materials');
+  const [isHovered, setIsHovered] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+  const autoScrollRef = useRef<number | null>(null);
+
+  // 复制卡片以实现无限滚动
+  const duplicatedMaterials = [...materials, ...materials, ...materials];
+
+  // 初始化滚动位置到中间组
+  useEffect(() => {
+    if (scrollRef.current) {
+      const cardWidth = 160 + 12; // 卡片宽度 + gap
+      scrollRef.current.scrollLeft = materials.length * cardWidth;
+    }
+  }, []);
+
+  // 监听手动滚动，实现无限循环
+  useEffect(() => {
+    const scrollContainer = scrollRef.current;
+    if (!scrollContainer) return;
+
+    const handleScroll = () => {
+      const cardWidth = 160 + 12;
+      const singleSetWidth = materials.length * cardWidth;
+
+      // 当手动滚动到边界时，无缝重置位置
+      if (scrollContainer.scrollLeft >= singleSetWidth * 2 - 10) {
+        scrollContainer.scrollLeft = singleSetWidth;
+      } else if (scrollContainer.scrollLeft <= 10) {
+        scrollContainer.scrollLeft = singleSetWidth;
+      }
+    };
+
+    scrollContainer.addEventListener('scroll', handleScroll);
+    return () => scrollContainer.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // 自动滚动和无限循环
+  useEffect(() => {
+    const scrollContainer = scrollRef.current;
+    if (!scrollContainer) return;
+
+    // 等待 1.5 秒后开始自动滚动
+    const startDelay = setTimeout(() => {
+      const autoScroll = () => {
+        if (!isHovered && !isDragging && scrollContainer) {
+          scrollContainer.scrollLeft += 0.5; // 缓慢滚动
+
+          // 无限循环：检测滚动位置并无缝重置
+          const cardWidth = 160 + 12; // 卡片宽度 + gap (md 时是 200 + 16)
+          const singleSetWidth = materials.length * cardWidth;
+
+          // 如果滚动到了第三组的开始，跳回第二组的开始
+          if (scrollContainer.scrollLeft >= singleSetWidth * 2) {
+            scrollContainer.scrollLeft = singleSetWidth;
+          }
+          // 如果向左滚动到了第一组的开始，跳到第二组的开始
+          else if (scrollContainer.scrollLeft <= 0) {
+            scrollContainer.scrollLeft = singleSetWidth;
+          }
+        }
+        autoScrollRef.current = requestAnimationFrame(autoScroll);
+      };
+
+      autoScrollRef.current = requestAnimationFrame(autoScroll);
+    }, 1500);
+
+    return () => {
+      clearTimeout(startDelay);
+      if (autoScrollRef.current) {
+        cancelAnimationFrame(autoScrollRef.current);
+      }
+    };
+  }, [isHovered, isDragging]);
+
+  // 箭头按钮滚动
   const scroll = (dir: 'left' | 'right') => {
     if (scrollRef.current) {
       scrollRef.current.scrollBy({
@@ -28,14 +105,55 @@ export default function Materials() {
     }
   };
 
+  // 鼠标拖拽支持
+  const handleMouseDown = (e: React.MouseEvent) => {
+    setIsDragging(true);
+    setStartX(e.pageX - (scrollRef.current?.offsetLeft || 0));
+    setScrollLeft(scrollRef.current?.scrollLeft || 0);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX - (scrollRef.current?.offsetLeft || 0);
+    const walk = (x - startX) * 2; // 滚动速度倍数
+    if (scrollRef.current) {
+      scrollRef.current.scrollLeft = scrollLeft - walk;
+    }
+  };
+
+  const handleMouseUpOrLeave = () => {
+    setIsDragging(false);
+  };
+
+  // 触摸滑动支持（移动端）
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setIsDragging(true);
+    setStartX(e.touches[0].pageX - (scrollRef.current?.offsetLeft || 0));
+    setScrollLeft(scrollRef.current?.scrollLeft || 0);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging) return;
+    const x = e.touches[0].pageX - (scrollRef.current?.offsetLeft || 0);
+    const walk = (x - startX) * 2;
+    if (scrollRef.current) {
+      scrollRef.current.scrollLeft = scrollLeft - walk;
+    }
+  };
+
+  const handleTouchEnd = () => {
+    setIsDragging(false);
+  };
+
   return (
     <section id="materials">
       {/* 绿色背景上半部分 */}
       <div className="bg-[#1B5E3A] pt-10 pb-24 md:pb-32">
         <div className="max-w-7xl mx-auto px-4 md:px-6">
-          <div className="w-10 h-[3px] bg-white/60 mb-3" />
-          <p className="text-white/60 text-xs tracking-[0.2em] uppercase mb-3">{t('label')}</p>
-          <h2 className="text-white text-xl md:text-2xl lg:text-3xl font-extrabold uppercase tracking-wide leading-tight max-w-lg">
+          <div className="w-10 h-[3px] bg-white/60 mb-3" data-animate="fade-up" data-delay="0" />
+          <p className="text-white/60 text-xs tracking-[0.2em] uppercase mb-3" data-animate="fade-up" data-delay="100">{t('label')}</p>
+          <h2 className="text-white text-xl md:text-2xl lg:text-3xl font-extrabold uppercase tracking-wide leading-tight max-w-lg" data-animate="fade-up" data-delay="200">
             {t('title')}
           </h2>
         </div>
@@ -63,16 +181,38 @@ export default function Materials() {
             </svg>
           </button>
 
-          {/* 滑页内容 */}
+          {/* 滑页内容 - 自动滚动轮播 */}
           <div
             ref={scrollRef}
-            className="flex gap-3 md:gap-4 overflow-x-auto scrollbar-hide snap-x snap-mandatory flex-1"
+            className="flex gap-3 md:gap-4 overflow-x-auto scrollbar-hide flex-1 cursor-grab active:cursor-grabbing"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => {
+              setIsHovered(false);
+              handleMouseUpOrLeave();
+            }}
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUpOrLeave}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+            style={{
+              scrollBehavior: isDragging ? 'auto' : 'smooth',
+            }}
           >
-            {materials.map((m) => (
-              <div key={m.name} className="snap-start flex-shrink-0 w-[160px] md:w-[200px]">
+            {duplicatedMaterials.map((m, index) => (
+              <div
+                key={`${m.name}-${index}`}
+                className="flex-shrink-0 w-[160px] md:w-[200px]"
+              >
                 {/* 图片区域 - 所有卡片完全一样的尺寸 */}
                 <div className="w-[160px] h-[160px] md:w-[200px] md:h-[200px] overflow-hidden bg-gray-700">
-                  <img src={m.image} alt={m.name} className="w-full h-full object-cover" />
+                  <img
+                    src={m.image}
+                    alt={m.name}
+                    className="w-full h-full object-cover pointer-events-none"
+                    draggable="false"
+                  />
                 </div>
                 <div className="pt-3">
                   <h4 className="font-bold text-sm text-[#1C2B25] uppercase tracking-wide">
@@ -107,10 +247,10 @@ export default function Materials() {
 
       {/* Modification Capabilities 部分 */}
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-12 py-12 bg-white">
-        <h3 className="text-lg font-bold text-text-dark mb-6">{t('capabilitiesLabel')}</h3>
+        <h3 className="text-lg font-bold text-text-dark mb-6" data-animate="fade-up" data-delay="0">{t('capabilitiesLabel')}</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* 卡片 1: Mechanical & Structural */}
-          <div className="bg-white rounded-lg overflow-hidden h-full">
+          <div className="bg-white rounded-lg overflow-hidden h-full" data-animate="scale-in" data-delay="0">
             <div className="h-1 bg-[#1B5E3A]"></div>
             <div className="p-6">
               <h4 className="font-bold text-text-dark mb-4">{t('mechanical')}</h4>
@@ -136,7 +276,7 @@ export default function Materials() {
           </div>
 
           {/* 卡片 2: Safety & Protection */}
-          <div className="bg-white rounded-lg overflow-hidden h-full">
+          <div className="bg-white rounded-lg overflow-hidden h-full" data-animate="scale-in" data-delay="100">
             <div className="h-1 bg-[#00695C]"></div>
             <div className="p-6">
               <h4 className="font-bold text-text-dark mb-4">{t('safety')}</h4>
@@ -158,7 +298,7 @@ export default function Materials() {
           </div>
 
           {/* 卡片 3: Weathering & Durability */}
-          <div className="bg-white rounded-lg overflow-hidden h-full">
+          <div className="bg-white rounded-lg overflow-hidden h-full" data-animate="scale-in" data-delay="200">
             <div className="h-1 bg-[#FF8F00]"></div>
             <div className="p-6">
               <h4 className="font-bold text-text-dark mb-4">{t('weathering')}</h4>
@@ -176,7 +316,7 @@ export default function Materials() {
           </div>
 
           {/* 卡片 4: Appearance & Custom */}
-          <div className="bg-white rounded-lg overflow-hidden h-full">
+          <div className="bg-white rounded-lg overflow-hidden h-full" data-animate="scale-in" data-delay="300">
             <div className="h-1 bg-[#546E7A]"></div>
             <div className="p-6">
               <h4 className="font-bold text-text-dark mb-4">{t('appearance')}</h4>

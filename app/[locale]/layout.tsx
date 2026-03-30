@@ -35,6 +35,8 @@ export default async function RootLayout({
     <html lang={locale}>
       <head>
         <link rel="icon" href="/favicon.ico" />
+        {/* Preload Hero 背景图片，优先加载 */}
+        <link rel="preload" as="image" href="/hero.png" fetchPriority="high" />
       </head>
       <body>
         <NextIntlClientProvider messages={messages}>

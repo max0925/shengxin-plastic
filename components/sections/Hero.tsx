@@ -1,6 +1,7 @@
 // Hero 板块 - hero.png 背景 + 左右渐变遮罩
 
 import React from 'react';
+import Link from 'next/link';
 import Button from '@/components/ui/Button';
 import { useTranslations, useLocale } from 'next-intl';
 
@@ -9,11 +10,13 @@ const Hero: React.FC = () => {
   const locale = useLocale();
   return (
     <section id="home" className="relative h-screen overflow-hidden bg-[#1B5E3A]">
-      {/* 背景图 - 用 img 标签最可靠 */}
+      {/* 背景图 - 用 img 标签最可靠，优先加载 */}
       <img
         src="/hero.png"
         alt=""
         className="absolute inset-0 w-full h-full object-cover"
+        fetchPriority="high"
+        loading="eager"
       />
 
       {/* 黑色半透明遮罩 */}
@@ -49,9 +52,12 @@ const Hero: React.FC = () => {
               <Button href="#materials" variant="primary" size="large" className="bg-[#1B5E3A] border-[#1B5E3A] hover:bg-[#00695C] hover:border-[#00695C] w-full sm:w-auto">
                 {t('viewMaterials')}
               </Button>
-              <Button variant="accent" size="large" href="#contact" className="w-full sm:w-auto">
+              <Link
+                href={`/${locale}/contact-us`}
+                className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold rounded-md bg-[#FF8F00] text-white hover:bg-[#F57C00] transition-all duration-300 w-full sm:w-auto shadow-lg hover:shadow-xl"
+              >
                 {t('getQuote')}
-              </Button>
+              </Link>
             </div>
           </div>
         </div>

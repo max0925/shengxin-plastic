@@ -5,10 +5,12 @@ import Materials from '@/components/sections/Materials';
 import Applications from '@/components/sections/Applications';
 import Capabilities from '@/components/sections/Capabilities';
 import CTA from '@/components/sections/CTA';
+import ScrollAnimations from '@/components/ui/ScrollAnimations';
 
 export default function Home() {
   return (
     <>
+      <ScrollAnimations />
       <Hero />
       <Materials />
       <Applications />

@@ -47,24 +47,26 @@ const Applications: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-12">
         {/* 板块标题 */}
         <div className="text-center mb-8">
-          <div className="text-secondary text-sm font-bold tracking-widest-custom mb-3 uppercase">
+          <div className="text-secondary text-sm font-bold tracking-widest-custom mb-3 uppercase" data-animate="fade-up" data-delay="0">
             {t('label')}
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-text-dark mb-3 font-title">
+          <h2 className="text-3xl md:text-4xl font-bold text-text-dark mb-3 font-title" data-animate="fade-up" data-delay="100">
             {t('title')}
           </h2>
-          <p className="text-base md:text-lg text-text-body max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-text-body max-w-2xl mx-auto" data-animate="fade-up" data-delay="200">
             {t('subtitle')}
           </p>
         </div>
 
         {/* 图片网格 - 4px 间隔 */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-1">
-          {applications.map((app) => (
+          {applications.map((app, index) => (
             <Link
               key={app.key}
               href={`/${locale}/applications/${app.slug}`}
               className="group relative overflow-hidden block"
+              data-animate="scale-in"
+              data-delay={index * 100}
             >
               {/* 图片撑满 */}
               <img

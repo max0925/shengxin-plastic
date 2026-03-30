@@ -1,52 +1,57 @@
 // CTA 板块 - 强转化区域，白色背景
 
 import React from 'react';
+import Link from 'next/link';
 import Button from '@/components/ui/Button';
 import { MailIcon, PhoneIcon, MessageCircleIcon } from '@/components/ui/Icons';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 
 const CTA: React.FC = () => {
   const t = useTranslations('cta');
+  const locale = useLocale();
   return (
     <section id="contact" className="py-12 md:py-16 bg-white">
       <div className="container-custom">
         <div className="max-w-4xl mx-auto text-center pb-8">
           {/* Label */}
-          <div className="text-[#FF8F00] text-xs md:text-sm font-bold tracking-widest-custom mb-3 uppercase">
+          <div className="text-[#FF8F00] text-xs md:text-sm font-bold tracking-widest-custom mb-3 uppercase" data-animate="fade-up" data-delay="0">
             {t('label')}
           </div>
 
           {/* Main Heading */}
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1C2B25] mb-4 font-title px-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1C2B25] mb-4 font-title px-4" data-animate="fade-up" data-delay="100">
             {t('title')}
           </h2>
 
           {/* Description */}
-          <p className="text-base md:text-lg text-gray-500 mb-8 max-w-2xl mx-auto px-4">
+          <p className="text-base md:text-lg text-gray-500 mb-8 max-w-2xl mx-auto px-4" data-animate="fade-up" data-delay="200">
             {t('subtitle')}
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col md:flex-row items-stretch md:items-center justify-center gap-3 mb-8 px-4">
-            <Button variant="accent" size="large" className="w-full md:w-auto">
+          <div className="flex flex-col md:flex-row items-stretch md:items-center justify-center gap-3 mb-8 px-4" data-animate="fade-up" data-delay="300">
+            <Link
+              href={`/${locale}/contact-us`}
+              className="inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 text-base md:text-lg font-bold rounded-md bg-[#FF8F00] text-white hover:bg-[#F57C00] transition-all duration-300 w-full md:w-auto shadow-lg hover:shadow-xl"
+            >
               {t('requestQuote')}
-            </Button>
-            <a
-              href="#"
+            </Link>
+            <Link
+              href={`/${locale}/contact-us`}
               className="inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 text-base md:text-lg font-medium rounded-md border-2 border-[#1B5E3A] text-[#1B5E3A] hover:bg-[#1B5E3A] hover:text-white transition-all duration-300 w-full md:w-auto"
             >
               {t('sendSpec')}
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              href={`/${locale}/contact-us`}
               className="inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 text-base md:text-lg font-medium rounded-md border-2 border-[#1B5E3A] text-[#1B5E3A] hover:bg-[#1B5E3A] hover:text-white transition-all duration-300 w-full md:w-auto"
             >
               {t('bookCall')}
-            </a>
+            </Link>
           </div>
 
           {/* Contact Info */}
-          <div className="flex flex-col md:flex-row md:flex-wrap items-center justify-center gap-x-6 gap-y-3 md:gap-y-1 text-xs md:text-sm text-gray-500 pt-6 border-t border-gray-300 px-4">
+          <div className="flex flex-col md:flex-row md:flex-wrap items-center justify-center gap-x-6 gap-y-3 md:gap-y-1 text-xs md:text-sm text-gray-700 pt-6 border-t border-gray-300 px-4" data-animate="fade-up" data-delay="400">
             <span className="flex items-center gap-1.5">
               <svg
                 className="w-4 h-4"

@@ -273,3 +273,40 @@ html {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* ============================================
+   滚动触发动画系统 - 使用 data-animate 属性
+   ============================================ */
+
+/* 所有需要动画的元素初始状态 */
+[data-animate] {
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+/* fade-up: 从下方 40px 淡入上移 */
+[data-animate="fade-up"] {
+  transform: translateY(40px);
+}
+
+/* fade-left: 从左侧 40px 滑入 */
+[data-animate="fade-left"] {
+  transform: translateX(-40px);
+}
+
+/* fade-right: 从右侧 40px 滑入 */
+[data-animate="fade-right"] {
+  transform: translateX(40px);
+}
+
+/* scale-in: 从 0.95 缩放到 1 + 淡入 */
+[data-animate="scale-in"] {
+  transform: scale(0.95);
+}
+
+/* 激活状态 - 当元素进入视口时添加 .animate-in class */
+[data-animate].animate-in {
+  opacity: 1;
+  transform: translateY(0) translateX(0) scale(1);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}

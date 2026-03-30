@@ -50,9 +50,9 @@ const Navbar: React.FC = () => {
 
             {/* Right: Contact & Language Switch */}
             <div className="flex-1 flex justify-end items-center gap-6">
-              <a href="#contact" className="bg-white/10 text-white text-sm font-semibold tracking-[0.05em] uppercase px-5 py-2.5 hover:bg-white/20 transition rounded-md">
+              <Link href={`/${locale}/contact-us`} className="bg-white/10 text-white text-sm font-semibold tracking-[0.05em] uppercase px-5 py-2.5 hover:bg-white/20 transition rounded-md">
                 {t('contact')}
-              </a>
+              </Link>
               <div className="w-px h-5 bg-white/30" />
               <button onClick={switchLocale} className="text-white/80 text-sm font-medium hover:text-white transition flex items-center gap-1.5 focus:outline-none">
                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -118,13 +118,13 @@ const Navbar: React.FC = () => {
             >
               {t('about')}
             </Link>
-            <a
-              href="#contact"
+            <Link
+              href={`/${locale}/contact-us`}
               className="text-white text-2xl font-semibold uppercase tracking-wide hover:text-accent transition"
               onClick={() => setMenuOpen(false)}
             >
               {t('contact')}
-            </a>
+            </Link>
             <button
               onClick={() => { switchLocale(); setMenuOpen(false); }}
               className="text-white/70 text-lg mt-4 flex items-center gap-2 hover:text-white transition"
