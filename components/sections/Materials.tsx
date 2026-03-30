@@ -19,11 +19,9 @@ const materials = [
 export default function Materials() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const t = useTranslations('materials');
-  const [isHovered, setIsHovered] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
-  const autoScrollRef = useRef<number | null>(null);
 
   // 复制卡片以实现无限滚动
   const duplicatedMaterials = [...materials, ...materials, ...materials];
@@ -56,44 +54,6 @@ export default function Materials() {
     scrollContainer.addEventListener('scroll', handleScroll);
     return () => scrollContainer.removeEventListener('scroll', handleScroll);
   }, []);
-
-  // 自动滚动和无限循环
-  useEffect(() => {
-    const scrollContainer = scrollRef.current;
-    if (!scrollContainer) return;
-
-    // 等待 1.5 秒后开始自动滚动
-    const startDelay = setTimeout(() => {
-      const autoScroll = () => {
-        if (!isHovered && !isDragging && scrollContainer) {
-          scrollContainer.scrollLeft += 0.5; // 缓慢滚动
-
-          // 无限循环：检测滚动位置并无缝重置
-          const cardWidth = 160 + 12; // 卡片宽度 + gap (md 时是 200 + 16)
-          const singleSetWidth = materials.length * cardWidth;
-
-          // 如果滚动到了第三组的开始，跳回第二组的开始
-          if (scrollContainer.scrollLeft >= singleSetWidth * 2) {
-            scrollContainer.scrollLeft = singleSetWidth;
-          }
-          // 如果向左滚动到了第一组的开始，跳到第二组的开始
-          else if (scrollContainer.scrollLeft <= 0) {
-            scrollContainer.scrollLeft = singleSetWidth;
-          }
-        }
-        autoScrollRef.current = requestAnimationFrame(autoScroll);
-      };
-
-      autoScrollRef.current = requestAnimationFrame(autoScroll);
-    }, 1500);
-
-    return () => {
-      clearTimeout(startDelay);
-      if (autoScrollRef.current) {
-        cancelAnimationFrame(autoScrollRef.current);
-      }
-    };
-  }, [isHovered, isDragging]);
 
   // 箭头按钮滚动
   const scroll = (dir: 'left' | 'right') => {
@@ -181,15 +141,11 @@ export default function Materials() {
             </svg>
           </button>
 
-          {/* 滑页内容 - 自动滚动轮播 */}
+          {/* 滑页内容 - 手动滚动轮播 */}
           <div
             ref={scrollRef}
             className="flex gap-3 md:gap-4 overflow-x-auto scrollbar-hide flex-1 cursor-grab active:cursor-grabbing"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => {
-              setIsHovered(false);
-              handleMouseUpOrLeave();
-            }}
+            onMouseLeave={handleMouseUpOrLeave}
             onMouseDown={handleMouseDown}
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUpOrLeave}
