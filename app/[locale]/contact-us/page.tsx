@@ -559,7 +559,7 @@ export default function ContactPage() {
                   {/* Baidu Maps Button */}
                   <div>
                     <a
-                      href="https://map.baidu.com/search/宁波市海曙区石碶街道双江安丰家村"
+                      href="https://map.baidu.com/marker?location=29.820642597636052,121.48992776870725&title=宁波市海曙盛欣塑化有限公司&content=宁波市海曙区石碶街道双江安丰家村&autoOpen=true"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 px-6 py-3 bg-[#FF8F00] hover:bg-[#F57C00] text-white font-bold rounded-md transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
@@ -608,7 +608,7 @@ export default function ContactPage() {
         {/* Google Maps iframe (hidden initially, shown if loads successfully) */}
         <div className={`w-full h-full ${showMapFallback ? 'opacity-0' : 'opacity-100'} transition-opacity duration-500`}>
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3452.835556094947!2d121.47992!3d29.84389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjnCsDUwJzM4LjAiTiAxMjHCsDI4JzQ3LjciRQ!5e0!3m2!1sen!2scn!4v1234567890!5m2!1sen!2scn"
+            src="https://maps.google.com/maps?q=29.820642597636052,121.48992776870725&hl=zh-CN&z=16&output=embed"
             width="100%"
             height="100%"
             style={{ border: 0 }}
