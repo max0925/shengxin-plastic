@@ -43,7 +43,7 @@ const Applications: React.FC = () => {
   ];
 
   return (
-    <section id="applications" className="py-12 md:py-16 lg:py-20 bg-gray-100">
+    <section id="applications" className="py-12 md:py-16 lg:py-20 bg-gray-100" style={{ scrollMarginTop: '80px' }}>
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-12">
         {/* 板块标题 */}
         <div className="text-center mb-8">

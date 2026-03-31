@@ -39,7 +39,7 @@ function AnimatedNumber({ target, duration = 3000 }: { target: number; duration?
 const Capabilities: React.FC = () => {
   const t = useTranslations('capabilities');
   return (
-    <section id="capabilities" className="relative overflow-visible">
+    <section id="capabilities" className="relative overflow-visible" style={{ scrollMarginTop: '80px' }}>
       <div className="grid grid-cols-1 lg:grid-cols-5 min-h-[650px]">
         {/* 左侧绿色 2/5 = 40% */}
         <div className="lg:col-span-2 bg-[#1B5E3A] p-6 md:p-10 lg:p-12">

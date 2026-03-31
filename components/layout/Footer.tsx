@@ -20,8 +20,8 @@ const Footer: React.FC = () => {
   ];
 
   const quickLinks = [
-    { name: t('quickLink1'), href: '#applications' },
-    { name: t('quickLink2'), href: '#capabilities' },
+    { name: t('quickLink1'), href: `/${locale}#applications` },
+    { name: t('quickLink2'), href: `/${locale}#capabilities` },
     { name: t('quickLink3'), href: `/${locale}/about` },
     { name: t('quickLink4'), href: `/${locale}/contact-us` },
     { name: t('quickLink5'), href: `/${locale}/contact-us` },
@@ -54,12 +54,12 @@ const Footer: React.FC = () => {
             <ul className="space-y-1.5 md:space-y-2">
               {materialLinks.map((link) => (
                 <li key={link}>
-                  <a
-                    href="#materials"
+                  <Link
+                    href={`/${locale}#materials`}
                     className="text-xs md:text-sm text-white text-opacity-80 hover:text-accent hover:translate-x-1 inline-block transition-all duration-300"
                   >
                     {link}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

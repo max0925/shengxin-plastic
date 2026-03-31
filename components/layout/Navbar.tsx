@@ -4,6 +4,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { MenuIcon, XIcon } from '@/components/ui/Icons';
 import { useLocale, useTranslations } from 'next-intl';
 import { useRouter, usePathname } from 'next/navigation';
@@ -30,18 +31,25 @@ const Navbar: React.FC = () => {
           <div className="hidden lg:flex items-center justify-between w-full">
             {/* Left Box: Logo + Nav Items */}
             <div className="flex items-center gap-12 flex-1">
-              <Link href={`/${locale}`} className="text-white text-xl font-extrabold tracking-[0.15em] uppercase hover:text-white/90 transition">
-                SHENGXIN
+              <Link href={`/${locale}`} className="flex items-center">
+                <Image
+                  src="/logo.png"
+                  alt="盛欣塑化 Shengxin Plastics"
+                  width={180}
+                  height={45}
+                  className="h-[45px] w-auto"
+                  priority
+                />
               </Link>
 
               {/* Navigation Links */}
               <div className="flex items-center gap-8">
-                <a href="#materials" className="text-white/80 text-sm font-medium tracking-[0.05em] uppercase hover:text-white transition">
+                <Link href={`/${locale}#materials`} className="text-white/80 text-sm font-medium tracking-[0.05em] uppercase hover:text-white transition">
                   {t('materials')}
-                </a>
-                <a href="#applications" className="text-white/80 text-sm font-medium tracking-[0.05em] uppercase hover:text-white transition">
+                </Link>
+                <Link href={`/${locale}#applications`} className="text-white/80 text-sm font-medium tracking-[0.05em] uppercase hover:text-white transition">
                   {t('applications')}
-                </a>
+                </Link>
                 <Link href={`/${locale}/about`} className="text-white/80 text-sm font-medium tracking-[0.05em] uppercase hover:text-white transition">
                   {t('about')}
                 </Link>
@@ -66,8 +74,15 @@ const Navbar: React.FC = () => {
           </div>
 
           {/* Mobile Logo */}
-          <Link href={`/${locale}`} className="lg:hidden text-white text-xl font-extrabold tracking-[0.15em] uppercase">
-            SHENGXIN
+          <Link href={`/${locale}`} className="lg:hidden flex items-center">
+            <Image
+              src="/logo.png"
+              alt="盛欣塑化 Shengxin Plastics"
+              width={150}
+              height={40}
+              className="h-[40px] w-auto"
+              priority
+            />
           </Link>
 
           {/* Mobile Hamburger Button */}
@@ -97,20 +112,20 @@ const Navbar: React.FC = () => {
                 <line x1="6" y1="6" x2="18" y2="18"/>
               </svg>
             </button>
-            <a
-              href="#materials"
+            <Link
+              href={`/${locale}#materials`}
               className="text-white text-2xl font-semibold uppercase tracking-wide hover:text-accent transition"
               onClick={() => setMenuOpen(false)}
             >
               {t('materials')}
-            </a>
-            <a
-              href="#applications"
+            </Link>
+            <Link
+              href={`/${locale}#applications`}
               className="text-white text-2xl font-semibold uppercase tracking-wide hover:text-accent transition"
               onClick={() => setMenuOpen(false)}
             >
               {t('applications')}
-            </a>
+            </Link>
             <Link
               href={`/${locale}/about`}
               className="text-white text-2xl font-semibold uppercase tracking-wide hover:text-accent transition"

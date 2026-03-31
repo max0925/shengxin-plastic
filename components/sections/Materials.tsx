@@ -32,7 +32,7 @@ export default function Materials() {
   };
 
   return (
-    <section id="materials">
+    <section id="materials" style={{ scrollMarginTop: '80px' }}>
       {/* 绿色背景上半部分 */}
       <div className="bg-[#1B5E3A] pt-10 pb-24 md:pb-32">
         <div className="max-w-7xl mx-auto px-4 md:px-6">
