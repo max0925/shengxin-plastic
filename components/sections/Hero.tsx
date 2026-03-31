@@ -1,6 +1,8 @@
 // Hero 板块 - hero.png 背景 + 左右渐变遮罩
 
-import React from 'react';
+'use client';
+
+import React, { useEffect } from 'react';
 import Link from 'next/link';
 import Button from '@/components/ui/Button';
 import { useTranslations, useLocale } from 'next-intl';
@@ -8,6 +10,21 @@ import { useTranslations, useLocale } from 'next-intl';
 const Hero: React.FC = () => {
   const t = useTranslations('hero');
   const locale = useLocale();
+
+  // Preload hero image
+  useEffect(() => {
+    const link = document.createElement('link');
+    link.rel = 'preload';
+    link.as = 'image';
+    link.href = '/hero.png';
+    link.fetchPriority = 'high';
+    document.head.appendChild(link);
+
+    return () => {
+      document.head.removeChild(link);
+    };
+  }, []);
+
   return (
     <section id="home" className="relative h-screen overflow-hidden bg-[#1B5E3A]">
       {/* 背景图 - 用 img 标签最可靠，优先加载 */}
@@ -15,7 +32,6 @@ const Hero: React.FC = () => {
         src="/hero.png"
         alt=""
         className="absolute inset-0 w-full h-full object-cover"
-        fetchPriority="high"
         loading="eager"
       />
 

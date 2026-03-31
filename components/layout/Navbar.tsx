@@ -35,10 +35,10 @@ const Navbar: React.FC = () => {
                 <Image
                   src="/logo.png"
                   alt="盛欣塑化 Shengxin Plastics"
-                  width={210}
-                  height={52}
-                  className="h-[52px] w-auto"
+                  width={200}
+                  height={50}
                   priority
+                  style={{ width: 'auto', height: '50px' }}
                 />
               </Link>
 
@@ -78,10 +78,10 @@ const Navbar: React.FC = () => {
             <Image
               src="/logo.png"
               alt="盛欣塑化 Shengxin Plastics"
-              width={170}
-              height={46}
-              className="h-[46px] w-auto"
+              width={160}
+              height={40}
               priority
+              style={{ width: 'auto', height: '40px' }}
             />
           </Link>
 
