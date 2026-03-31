@@ -200,25 +200,25 @@ export default async function ApplicationPage({ params }: { params: { slug: stri
                 <>
                   {/* Home Appliances: 7个产品的布局 */}
                   <div className="md:col-span-1 lg:col-span-1">
-                    <ProductCard product={translatedProducts[0]} locale={params.locale} />
+                    <ProductCard product={translatedProducts[0]} locale={params.locale} slug={params.slug} />
                   </div>
                   <div className="md:col-span-1 lg:col-span-2">
-                    <ProductCard product={translatedProducts[1]} locale={params.locale} />
+                    <ProductCard product={translatedProducts[1]} locale={params.locale} slug={params.slug} />
                   </div>
                   <div className="md:col-span-1 lg:col-span-2">
-                    <ProductCard product={translatedProducts[2]} locale={params.locale} />
+                    <ProductCard product={translatedProducts[2]} locale={params.locale} slug={params.slug} />
                   </div>
                   <div className="md:col-span-1 lg:col-span-1">
-                    <ProductCard product={translatedProducts[3]} locale={params.locale} />
+                    <ProductCard product={translatedProducts[3]} locale={params.locale} slug={params.slug} />
                   </div>
                   <div className="md:col-span-1 lg:col-span-1">
-                    <ProductCard product={translatedProducts[4]} locale={params.locale} />
+                    <ProductCard product={translatedProducts[4]} locale={params.locale} slug={params.slug} />
                   </div>
                   <div className="md:col-span-1 lg:col-span-1">
-                    <ProductCard product={translatedProducts[5]} locale={params.locale} />
+                    <ProductCard product={translatedProducts[5]} locale={params.locale} slug={params.slug} />
                   </div>
                   <div className="md:col-span-2 lg:col-span-1">
-                    <ProductCard product={translatedProducts[6]} locale={params.locale} />
+                    <ProductCard product={translatedProducts[6]} locale={params.locale} slug={params.slug} />
                   </div>
                 </>
               ) : (
