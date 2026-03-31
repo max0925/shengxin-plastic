@@ -25,7 +25,7 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[#1B5E3A] shadow-md py-3">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto pl-3 pr-6">
         <div className="flex items-center justify-between">
           {/* Desktop Navbar Layout: Logo (Left), Links (Middle-Left), Lang/Contact (Right) */}
           <div className="hidden lg:flex items-center justify-between w-full">
@@ -35,9 +35,9 @@ const Navbar: React.FC = () => {
                 <Image
                   src="/logo.png"
                   alt="盛欣塑化 Shengxin Plastics"
-                  width={180}
-                  height={45}
-                  className="h-[45px] w-auto"
+                  width={210}
+                  height={52}
+                  className="h-[52px] w-auto"
                   priority
                 />
               </Link>
@@ -78,9 +78,9 @@ const Navbar: React.FC = () => {
             <Image
               src="/logo.png"
               alt="盛欣塑化 Shengxin Plastics"
-              width={150}
-              height={40}
-              className="h-[40px] w-auto"
+              width={170}
+              height={46}
+              className="h-[46px] w-auto"
               priority
             />
           </Link>

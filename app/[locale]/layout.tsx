@@ -14,6 +14,13 @@ export const metadata: Metadata = {
   keywords:
     'modified plastics, plastic compounding, engineering plastics, custom compounds, PP PA ABS PC, Ningbo manufacturer, China plastics',
   authors: [{ name: 'Shengxin Plastic' }],
+  icons: {
+    icon: [
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+    ],
+    apple: '/apple-touch-icon.png',
+  },
 };
 
 export const viewport: Viewport = {
@@ -34,7 +41,6 @@ export default async function RootLayout({
   return (
     <html lang={locale}>
       <head>
-        <link rel="icon" href="/favicon.ico" />
         {/* Preload Hero 背景图片，优先加载 */}
         <link rel="preload" as="image" href="/hero.png" fetchPriority="high" />
       </head>
