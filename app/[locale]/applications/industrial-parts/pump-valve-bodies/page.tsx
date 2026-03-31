@@ -1,4 +1,4 @@
-// Air Conditioner 详情页面
+// Pump & Valve Bodies 详情页面
 
 import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
@@ -8,34 +8,19 @@ export const dynamic = 'force-dynamic';
 // 零部件数据 - 使用 key 来对应翻译
 const components = [
   {
-    image: '/HomeAppliances/A1.jpg',
-    nameKey: 'a1Name',
-    descKey: 'a1Desc',
+    image: '/industrial-parts/C1.jpg',
+    nameKey: 'c1Name',
+    descKey: 'c1Desc',
   },
   {
-    image: '/HomeAppliances/A2.jpg',
-    nameKey: 'a2Name',
-    descKey: 'a2Desc',
-  },
-  {
-    image: '/HomeAppliances/A3.jpg',
-    nameKey: 'a3Name',
-    descKey: 'a3Desc',
-  },
-  {
-    image: '/HomeAppliances/A4.jpg',
-    nameKey: 'a4Name',
-    descKey: 'a4Desc',
-  },
-  {
-    image: '/HomeAppliances/A5.jpg',
-    nameKey: 'a5Name',
-    descKey: 'a5Desc',
+    image: '/industrial-parts/C3.jpg',
+    nameKey: 'c3Name',
+    descKey: 'c3Desc',
   },
 ];
 
-export default async function AirConditionerPage({ params }: { params: { locale: string } }) {
-  const t = await getTranslations('airConditioner');
+export default async function PumpValveBodiesPage({ params }: { params: { locale: string } }) {
+  const t = await getTranslations('pumpValveBodies');
 
   return (
     <main className="bg-white">
@@ -51,8 +36,8 @@ export default async function AirConditionerPage({ params }: { params: { locale:
               {t('applications')}
             </Link>
             <span>/</span>
-            <Link href={`/${params.locale}/applications/home-appliances`} className="hover:text-[#1B5E3A] transition">
-              {t('homeAppliances')}
+            <Link href={`/${params.locale}/applications/industrial-parts`} className="hover:text-[#1B5E3A] transition">
+              {t('industrialParts')}
             </Link>
             <span>/</span>
             <span className="text-[#1B5E3A] font-semibold">{t('title')}</span>
@@ -67,8 +52,8 @@ export default async function AirConditionerPage({ params }: { params: { locale:
             {/* 左侧：主图 */}
             <div className="relative aspect-square overflow-hidden rounded-lg">
               <img
-                src="/HomeAppliances/AirConditioner.jpg"
-                alt="Air Conditioner"
+                src="/industrial-parts/valve.jepg.jpeg"
+                alt="Pump & Valve Bodies"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -83,13 +68,7 @@ export default async function AirConditionerPage({ params }: { params: { locale:
               </h1>
               <div className="space-y-4 text-[#37474F] leading-relaxed">
                 <p className="text-base md:text-lg">
-                  {t('description1')}
-                </p>
-                <p className="text-base md:text-lg">
-                  {t('description2')}
-                </p>
-                <p className="text-base md:text-lg">
-                  {t('description3')}
+                  {t('description')}
                 </p>
               </div>
             </div>
@@ -144,10 +123,10 @@ export default async function AirConditionerPage({ params }: { params: { locale:
 
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link
-              href={`/${params.locale}/applications/home-appliances`}
+              href={`/${params.locale}/applications/industrial-parts`}
               className="bg-[#1B5E3A] text-white px-8 py-4 font-semibold rounded hover:bg-[#145230] transition text-lg shadow-lg hover:shadow-xl"
             >
-              {t('backToAppliances')}
+              {t('backToIndustrialParts')}
             </Link>
           </div>
         </div>

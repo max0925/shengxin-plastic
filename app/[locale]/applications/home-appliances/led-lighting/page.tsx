@@ -1,4 +1,4 @@
-// Air Conditioner 详情页面
+// LED Lighting 详情页面
 
 import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
@@ -8,34 +8,29 @@ export const dynamic = 'force-dynamic';
 // 零部件数据 - 使用 key 来对应翻译
 const components = [
   {
-    image: '/HomeAppliances/A1.jpg',
-    nameKey: 'a1Name',
-    descKey: 'a1Desc',
+    image: '/HomeAppliances/B1.jpg',
+    nameKey: 'b1Name',
+    descKey: 'b1Desc',
   },
   {
-    image: '/HomeAppliances/A2.jpg',
-    nameKey: 'a2Name',
-    descKey: 'a2Desc',
+    image: '/HomeAppliances/B2.jpg',
+    nameKey: 'b2Name',
+    descKey: 'b2Desc',
   },
   {
-    image: '/HomeAppliances/A3.jpg',
-    nameKey: 'a3Name',
-    descKey: 'a3Desc',
+    image: '/HomeAppliances/B3.jpg',
+    nameKey: 'b3Name',
+    descKey: 'b3Desc',
   },
   {
-    image: '/HomeAppliances/A4.jpg',
-    nameKey: 'a4Name',
-    descKey: 'a4Desc',
-  },
-  {
-    image: '/HomeAppliances/A5.jpg',
-    nameKey: 'a5Name',
-    descKey: 'a5Desc',
+    image: '/HomeAppliances/B4.jpg',
+    nameKey: 'b4Name',
+    descKey: 'b4Desc',
   },
 ];
 
-export default async function AirConditionerPage({ params }: { params: { locale: string } }) {
-  const t = await getTranslations('airConditioner');
+export default async function LedLightingPage({ params }: { params: { locale: string } }) {
+  const t = await getTranslations('ledLighting');
 
   return (
     <main className="bg-white">
@@ -67,8 +62,8 @@ export default async function AirConditionerPage({ params }: { params: { locale:
             {/* 左侧：主图 */}
             <div className="relative aspect-square overflow-hidden rounded-lg">
               <img
-                src="/HomeAppliances/AirConditioner.jpg"
-                alt="Air Conditioner"
+                src="/HomeAppliances/LEDLighting.jpg"
+                alt="LED Lighting"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -83,13 +78,7 @@ export default async function AirConditionerPage({ params }: { params: { locale:
               </h1>
               <div className="space-y-4 text-[#37474F] leading-relaxed">
                 <p className="text-base md:text-lg">
-                  {t('description1')}
-                </p>
-                <p className="text-base md:text-lg">
-                  {t('description2')}
-                </p>
-                <p className="text-base md:text-lg">
-                  {t('description3')}
+                  {t('description')}
                 </p>
               </div>
             </div>

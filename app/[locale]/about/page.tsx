@@ -207,13 +207,7 @@ export default async function AboutPage({ params }: { params: { locale: string }
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link
                 href={`/${params.locale}/contact-us`}
-                className="bg-[#FF8F00] text-white px-8 py-4 font-semibold rounded hover:bg-[#F57C00] transition text-lg"
-              >
-                {t('requestQuote')}
-              </Link>
-              <Link
-                href={`/${params.locale}/contact-us`}
-                className="border-2 border-[#1B5E3A] text-[#1B5E3A] px-8 py-4 font-semibold rounded hover:bg-[#1B5E3A] hover:text-white transition text-lg"
+                className="bg-[#1B5E3A] text-white px-8 py-4 font-semibold rounded hover:bg-[#145230] transition text-lg shadow-lg hover:shadow-xl"
               >
                 {t('contactUs')}
               </Link>
